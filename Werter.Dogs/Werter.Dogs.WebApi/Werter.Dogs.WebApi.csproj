@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Werter.Dogs.Dominio\Werter.Dogs.Dominio.csproj" />
+    <ProjectReference Include="..\Werter.Dogs.Infra\Werter.Dogs.Infra.csproj" />
+    <ProjectReference Include="..\Werter.Dogs.Servicos\Werter.Dogs.Servicos.csproj" />
+  </ItemGroup>
+
+
+</Project>

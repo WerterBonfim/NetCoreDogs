@@ -1,0 +1,9 @@
+{
+    "git.enabled": false,
+    "files.exclude": {
+        
+        ".vscode": true,
+        ".gitignore": true,
+        "Werter.Dogs": true
+    }
+}

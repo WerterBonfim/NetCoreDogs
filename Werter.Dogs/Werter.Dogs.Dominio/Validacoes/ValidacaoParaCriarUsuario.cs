@@ -1,11 +1,11 @@
 ﻿using FluentValidation;
-using Werter.Dogs.Dominio.Entidades;
+using Werter.Dogs.Dominio.Requisitos;
 
 namespace Werter.Dogs.Dominio.Validacoes
 {
-    public class ValidacaoUsuario : AbstractValidator<Usuario>
+    public class ValidacaoParaCriarUsuario : AbstractValidator<RequisitosParaCriarUsuario>
     {
-        public ValidacaoUsuario()
+        public ValidacaoParaCriarUsuario()
         {
             RuleFor(x => x.NomeDeUsuario)
                 .NotNull()
@@ -20,9 +20,7 @@ namespace Werter.Dogs.Dominio.Validacoes
             RuleFor(x => x.Senha)
                 .MinimumLength(4)
                 .MaximumLength(10);
-        }
-
-        
+        }        
 
     }
 }
