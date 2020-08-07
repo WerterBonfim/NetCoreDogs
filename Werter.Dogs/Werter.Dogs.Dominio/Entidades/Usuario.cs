@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Werter.Dogs.Dominio.Entidades
 {
@@ -23,7 +24,13 @@ namespace Werter.Dogs.Dominio.Entidades
         public void AtualizarSenha(string senha)
         {
             this.Senha = senha;
+            this.DataHoraAlteracao = DateTime.Now;
         }
-        
+
+        public void AtualizarNome(string nome)
+        {
+            this.Nome = nome;
+            this.DataHoraAlteracao = DateTime.Now;
+        }
     }
 }

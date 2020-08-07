@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Werter.Dogs.Compartilhado.Interfaces;
-using Werter.Dogs.Dominio.Entidades;
 using Werter.Dogs.Dominio.Validacoes;
 
 namespace Werter.Dogs.Dominio.Requisitos
@@ -13,6 +12,7 @@ namespace Werter.Dogs.Dominio.Requisitos
         public RequisitosParaCriarUsuario()
         {
             _validacoesDeUsuario = new ValidacaoParaCriarUsuario();
+            
         }
 
         public string NomeDeUsuario { get; set; }
@@ -38,5 +38,5 @@ namespace Werter.Dogs.Dominio.Requisitos
         }
     }
 
-   
+
 }

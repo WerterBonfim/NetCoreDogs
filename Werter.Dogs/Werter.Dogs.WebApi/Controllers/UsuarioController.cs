@@ -10,10 +10,10 @@ namespace Werter.Dogs.WebApi.Controllers
     [ApiController]
     public class UsuarioController : ControllerBase
     {
-        private readonly LidarComCriacaoDeUsuario _lidarComCriacaoDeUsuario;
-        public UsuarioController(LidarComCriacaoDeUsuario lidarComCriacaoDeUsuario)
+        private readonly ServisosDoUsuario _servisosDoUsuario;
+        public UsuarioController(ServisosDoUsuario servisosDoUsuario)
         {
-            _lidarComCriacaoDeUsuario = lidarComCriacaoDeUsuario;
+            _servisosDoUsuario = servisosDoUsuario;
         }
 
         [HttpGet]
@@ -27,7 +27,21 @@ namespace Werter.Dogs.WebApi.Controllers
         {
             try
             {
-                var resultado = _lidarComCriacaoDeUsuario.LidarCom(requisitos);
+                var resultado = _servisosDoUsuario.LidarCom(requisitos);
+                return Ok(resultado);
+            }
+            catch (Exception erro)
+            {
+                return StatusCode(500, new { Mensagem = "Ocorre um erro grave no servidor: " + erro.Message });
+            }
+        }
+
+        [HttpPut]
+        public IActionResult AtualizarUsuario([FromBody] RequisitosParaAtualizarUsuario requisitos)
+        {
+            try
+            {
+                var resultado = _servisosDoUsuario.LidarCom(requisitos);
                 return Ok(resultado);
             }
             catch (Exception erro)

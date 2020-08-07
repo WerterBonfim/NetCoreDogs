@@ -8,7 +8,10 @@ namespace Werter.Dogs.Dominio.Entidades
         public EntidadeBase()
         {
             Id = Guid.NewGuid();
+            this.DataHoraAlteracao = DateTime.Now;
         }
+
+        public DateTime DataHoraAlteracao { get; set; }
     }
 
 

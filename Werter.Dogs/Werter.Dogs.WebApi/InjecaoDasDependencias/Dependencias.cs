@@ -11,7 +11,7 @@ namespace Werter.Dogs.WebApi.InjecaoDasDependencias
         public static void LidarComAsDepencias(IServiceCollection services)
         {
             // Serviços
-            services.AddTransient<LidarComCriacaoDeUsuario, LidarComCriacaoDeUsuario>();
+            services.AddTransient<ServisosDoUsuario, ServisosDoUsuario>();
 
             // Repositorio
             services.AddTransient<DogsContexto, DogsContexto>();
