@@ -10,5 +10,9 @@
     <ProjectReference Include="..\Werter.Dogs.Servicos\Werter.Dogs.Servicos.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.6" />
+  </ItemGroup>
+
 
 </Project>

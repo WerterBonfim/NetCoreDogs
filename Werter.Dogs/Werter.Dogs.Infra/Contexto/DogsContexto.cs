@@ -10,7 +10,7 @@ namespace Werter.Dogs.Infra.Contexto
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var stringDeConexao = "Server=192.168.1.9,1433;Database=DB_Dogs;User Id=sa;Password=!007Dogs;";
+            var stringDeConexao = "Server=localhost,1433;Database=DB_Dogs;User Id=sa;Password=!007Dogs;";
             optionsBuilder.UseSqlServer(stringDeConexao);
             
         }
