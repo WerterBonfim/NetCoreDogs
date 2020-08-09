@@ -6,7 +6,8 @@ namespace Werter.Dogs.Servicos.ServicosDeUsuario
 {
     public class ServisosDoUsuario :
         ITarefa<RequisitosParaCriarUsuario>,
-        ITarefa<RequisitosParaAtualizarUsuario>
+        ITarefa<RequisitosParaAtualizarUsuario>,
+        ITarefa<RequisitosParaLogin>,
 
     {
         private readonly IRepositorioCliente _clienteRepositorio;

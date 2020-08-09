@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 using Werter.Dogs.Dominio.Requisitos;
 using Werter.Dogs.Servicos.ServicosDeUsuario;
 
@@ -22,7 +23,9 @@ namespace Werter.Dogs.WebApi.Controllers
             return new string[] { "Olá", "Mundo" };
         }
 
+        [AllowAnonymous]
         [HttpPost]
+        [Route("criar")]
         public IActionResult CadastrarUsuario([FromBody] RequisitosParaCriarUsuario requisitos)
         {
             try
