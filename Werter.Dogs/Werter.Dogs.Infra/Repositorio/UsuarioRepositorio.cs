@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore;
 using Werter.Dogs.Dominio.Entidades;
 using Werter.Dogs.Dominio.Repositorio;
 using Werter.Dogs.Infra.Contexto;
@@ -23,9 +24,11 @@ namespace Werter.Dogs.Infra.Repositorio
             _dbContext.Usuarios.Update(usuario);            
         }
 
-        public List<Usuario> Buscar(Expression<Func<Usuario, bool>> predicate, params object[] includes)
+        public IQueryable<Usuario> Buscar(Expression<Func<Usuario, bool>> predicate, params object[] includes)
         {
-            throw new NotImplementedException();
+            return _dbContext.Usuarios
+                .AsQueryable()
+                .Where(predicate);
         }
 
         public Usuario BuscarPorId(Guid id)

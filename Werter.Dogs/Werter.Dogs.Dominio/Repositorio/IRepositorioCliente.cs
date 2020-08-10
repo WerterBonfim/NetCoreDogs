@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using Werter.Dogs.Dominio.Entidades;
 using Werter.Dogs.Dominio.Repositorio.Core;
@@ -10,7 +11,7 @@ namespace Werter.Dogs.Dominio.Repositorio
     {        
         bool EmailExiste(string email);
         bool NomeDeUsuarioExiste(string nomeDeUsuario);        
-        new List<Usuario> Buscar(Expression<Func<Usuario, bool>> predicate, params object[] includes);
+        new IQueryable<Usuario> Buscar(Expression<Func<Usuario, bool>> predicate, params object[] includes);
         new Usuario BuscarPorId(Guid id);
         new void Atualizar(Usuario usuario);
         void Salvar();

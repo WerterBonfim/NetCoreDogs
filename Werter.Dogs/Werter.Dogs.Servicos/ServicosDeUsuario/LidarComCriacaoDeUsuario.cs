@@ -25,12 +25,13 @@ namespace Werter.Dogs.Servicos.ServicosDeUsuario
                 return new ResultadoDaTarefa(false, "Nome de usuário já foi registrado");
 
             if (EmailJaFoiRegistrado(requisitos.Email))
-                return new ResultadoDaTarefa(false, "Email já registrado");            
+                return new ResultadoDaTarefa(false, "Email já registrado");
 
-
-            var usuario = new Usuario(requisitos.NomeDeUsuario, requisitos.Email, requisitos.Senha);
+            var senhaCriptografada = HashUtil.GetSha256FromString(requisitos.Senha);            
+            var usuario = new Usuario(requisitos.NomeDeUsuario, requisitos.Email, senhaCriptografada);
             _clienteRepositorio.Inserir(usuario);
             _clienteRepositorio.Salvar();
+            
             return new ResultadoDaTarefa(true, "Cadastrado com sucesso");
         }
 

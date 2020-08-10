@@ -39,6 +39,7 @@ namespace Werter.Dogs.WebApi.Controllers
             }
         }
 
+        [Authorize]
         [HttpPut]
         public IActionResult AtualizarUsuario([FromBody] RequisitosParaAtualizarUsuario requisitos)
         {

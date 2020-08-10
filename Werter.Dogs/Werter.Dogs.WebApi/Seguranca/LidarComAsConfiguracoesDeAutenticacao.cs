@@ -28,15 +28,25 @@ namespace Werter.Dogs.WebApi.Seguranca
                 x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(x =>
             {
+                // x.Events = new JwtBearerEvents
+                // {
+                //     OnAuthenticationFailed = (contexto) =>
+                //     {
+                //         contexto.Fail("werter");
+                //         return contexto.Request.
+                //     }
+                //     
+                // };
+
+
                 var parametrosDeValidacao = x.TokenValidationParameters;
-                
+
                 parametrosDeValidacao.IssuerSigningKey = configuracaoDeAutenticacao.Key;
                 parametrosDeValidacao.ValidAudience = configuracaoDeToken.Audience;
                 parametrosDeValidacao.ValidIssuer = configuracaoDeToken.Issuer;
                 parametrosDeValidacao.ValidateIssuerSigningKey = true;
                 parametrosDeValidacao.ClockSkew = TimeSpan.Zero;
-
-
+                
             });
         }
     }

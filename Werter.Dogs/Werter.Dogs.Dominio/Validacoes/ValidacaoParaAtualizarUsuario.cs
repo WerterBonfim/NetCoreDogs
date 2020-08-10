@@ -24,9 +24,11 @@ namespace Werter.Dogs.Dominio.Validacoes
                 });
 
             RuleFor(x => x.Senha)
-                .MinimumLength(3).WithMessage("Senha deve conter pelo menos 3 caracteres");
-            
-
+                .Custom((senha, context) =>
+                {
+                    if (!string.IsNullOrEmpty(senha) && senha.Length < 3)
+                        context.AddFailure("Nome", "Senha deve conter pelo menos 3 caracteres");
+                });
         }
     }
 }

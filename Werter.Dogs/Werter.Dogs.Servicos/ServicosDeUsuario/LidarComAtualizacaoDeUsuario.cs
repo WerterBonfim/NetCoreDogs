@@ -18,7 +18,10 @@ namespace Werter.Dogs.Servicos.ServicosDeUsuario
         public IResultado LidarCom(RequisitosParaAtualizarUsuario requisitos)
         {
             if (!requisitos.EValido())
-                return new ResultadoDaTarefa(false, "Não foi possivel atualizar os dados do usuario", requisitos.ListaErros()?.ToArray());
+                return new ResultadoDaTarefa(
+                    false, 
+                    "Não foi possivel atualizar os dados do usuario",
+                    listaDeErros: requisitos.ListaErros()?.ToArray());
 
             var usuario = _clienteRepositorio.BuscarPorId(requisitos.Id);
             usuario.AtualizarNome(requisitos.Nome);

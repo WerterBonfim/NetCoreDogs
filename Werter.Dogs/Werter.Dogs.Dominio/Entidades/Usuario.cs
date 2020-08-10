@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Werter.Dogs.Compartilhado;
 
 namespace Werter.Dogs.Dominio.Entidades
 {
@@ -23,7 +24,8 @@ namespace Werter.Dogs.Dominio.Entidades
 
         public void AtualizarSenha(string senha)
         {
-            this.Senha = senha;
+            var senhaCriptografada = HashUtil.GetSha256FromString(senha);
+            this.Senha = senhaCriptografada;
             this.DataHoraAlteracao = DateTime.Now;
         }
 
