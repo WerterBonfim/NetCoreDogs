@@ -2,28 +2,25 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Werter.Dogs.Compartilhado.Interfaces;
-using Werter.Dogs.Dominio.Validacoes.Foto;
+using Werter.Dogs.Compartilhado.Validacao;
 
 namespace Werter.Dogs.Dominio.Requisitos.Foto
 {
-    public class RequisitosParaCadastrarFoto : IRequisitos
+    public class RequisitosParaIncrementarAcesso : IRequisitos
     {
-        public string Nome { get; set; }
-        public int Idade { get; set; }
-        public int Peso { get; set; }
-        public Guid UsuarioId { get; set; }
+        public Guid Id { get; set; }
 
-        private readonly ValidacaoParaCadastrarUmaFoto _validacao;
+        private readonly ValidacaoDeId _validacao;
         private IEnumerable<string> _erros;
 
-        public RequisitosParaCadastrarFoto()
+        public RequisitosParaIncrementarAcesso()
         {
-            _validacao = new ValidacaoParaCadastrarUmaFoto();
+            _validacao = new ValidacaoDeId();
         }
 
         public bool EValido()
         {
-            var resultado = _validacao.Validate(this);
+            var resultado = _validacao.Validate(Id);
             _erros = resultado.Errors
                 .Select(x => x.ErrorMessage)
                 .ToList();

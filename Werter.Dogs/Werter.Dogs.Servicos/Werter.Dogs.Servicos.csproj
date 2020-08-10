@@ -9,4 +9,16 @@
     <ProjectReference Include="..\Werter.Dogs.Dominio\Werter.Dogs.Dominio.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="ServicosDeUsuario\Foto\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="ServicosDeUsuario\Foto\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ServicosDeUsuario\Foto\**" />
+  </ItemGroup>
+
 </Project>

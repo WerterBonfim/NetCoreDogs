@@ -12,6 +12,7 @@ namespace Werter.Dogs.Dominio.Repositorio.Core
         void Atualizar(TEntity entity);
         void Inserir(TEntity entity);
 
-        List<TEntity> Listar();
+        List<TEntity> Listar(int pagina = 1, int qtdPorPagina = 5);
+        void Salvar();
     }
 }

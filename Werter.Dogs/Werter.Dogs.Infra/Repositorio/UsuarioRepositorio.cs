@@ -39,8 +39,8 @@ namespace Werter.Dogs.Infra.Repositorio
         public bool EmailExiste(string email)
         {
             return _dbContext.Usuarios
-                .Where(x => x.Email == email)
-                .Any();
+                .AsQueryable()
+                .Any(x => x.Email == email);
         }
 
         public void Inserir(Usuario entity)
@@ -49,16 +49,20 @@ namespace Werter.Dogs.Infra.Repositorio
             
         }
 
-        public List<Usuario> Listar()
+        public List<Usuario> Listar(int pagina = 1, int qtdPorPagina = 5)
         {
-            throw new NotImplementedException();
+            var skip = (pagina * qtdPorPagina) - qtdPorPagina;
+            return _dbContext.Usuarios
+                .AsQueryable()
+                .Take(qtdPorPagina)
+                .Skip(skip)
+                .ToList();
         }
 
         public bool NomeDeUsuarioExiste(string nomeDeUsuario)
         {
             return _dbContext.Usuarios
-                .Where(x => x.NomeDeUsuario == nomeDeUsuario)
-                .Any();
+                .Any(x => x.NomeDeUsuario == nomeDeUsuario);
         }
 
         public void Salvar()

@@ -14,6 +14,5 @@ namespace Werter.Dogs.Dominio.Repositorio
         new IQueryable<Usuario> Buscar(Expression<Func<Usuario, bool>> predicate, params object[] includes);
         new Usuario BuscarPorId(Guid id);
         new void Atualizar(Usuario usuario);
-        void Salvar();
     }
 }

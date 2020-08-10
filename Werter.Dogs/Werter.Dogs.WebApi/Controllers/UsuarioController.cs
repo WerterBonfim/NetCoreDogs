@@ -25,7 +25,6 @@ namespace Werter.Dogs.WebApi.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        [Route("criar")]
         public IActionResult CadastrarUsuario([FromBody] RequisitosParaCriarUsuario requisitos)
         {
             try

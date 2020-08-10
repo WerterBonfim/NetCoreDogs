@@ -7,6 +7,7 @@ namespace Werter.Dogs.Infra.Contexto
     {
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Foto> Fotos { get; set; }
+        public DbSet<Comentario> Comentarios { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -21,6 +22,7 @@ namespace Werter.Dogs.Infra.Contexto
             //this.Database.EnsureCreated();
             modelBuilder.ApplyConfiguration(new Mapeamento.UsuarioMap());
             modelBuilder.ApplyConfiguration(new Mapeamento.FotoMap());
+            modelBuilder.ApplyConfiguration(new Mapeamento.ComentarioMap());
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Werter.Dogs.Dominio.Requisitos
         }
         
         public string Login { get; set; }
-        public string password { get; set; }
+        public string Senha { get; set; }
         
         public bool EValido()
         {

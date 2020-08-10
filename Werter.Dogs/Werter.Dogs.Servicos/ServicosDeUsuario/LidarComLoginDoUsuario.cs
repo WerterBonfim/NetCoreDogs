@@ -42,8 +42,7 @@ namespace Werter.Dogs.Servicos.ServicosDeUsuario
 
         private static Expression<Func<Usuario, bool>> PorUsuarioESenha(RequisitosParaLogin requisitos)
         {
-            //TODO: Descriptografar senha do usuario
-            var senhaCriptografada = HashUtil.GetSha256FromString(requisitos.password);
+            var senhaCriptografada = HashUtil.GetSha256FromString(requisitos.Senha);
             return x =>
                 (x.NomeDeUsuario == requisitos.Login || x.Email == requisitos.Login) &&
                 x.Senha == senhaCriptografada;

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Werter.Dogs.Infra.Contexto;
 
 namespace Werter.Dogs.Infra.Migrations
 {
     [DbContext(typeof(DogsContexto))]
-    partial class DogsContextoModelSnapshot : ModelSnapshot
+    [Migration("20200810053524_ajuste-foto")]
+    partial class ajustefoto
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,6 +43,9 @@ namespace Werter.Dogs.Infra.Migrations
 
                     b.Property<int>("QuantidadeDeAcessos")
                         .HasColumnType("int");
+
+                    b.Property<string>("Src")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid?>("UsuarioId")
                         .HasColumnType("uniqueidentifier");

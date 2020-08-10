@@ -13,7 +13,6 @@ namespace Werter.Dogs.Dominio.Entidades
         public ICollection<Foto> Fotos { get; set; }
 
 
-
         public Usuario() { }
         public Usuario(string nomeDeUsuario, string email, string senha) : this()
         {
@@ -26,13 +25,13 @@ namespace Werter.Dogs.Dominio.Entidades
         {
             var senhaCriptografada = HashUtil.GetSha256FromString(senha);
             this.Senha = senhaCriptografada;
-            this.DataHoraAlteracao = DateTime.Now;
+            this.AtualizarDtHoraAlteracao();
         }
 
         public void AtualizarNome(string nome)
         {
             this.Nome = nome;
-            this.DataHoraAlteracao = DateTime.Now;
+            this.AtualizarDtHoraAlteracao();
         }
     }
 }

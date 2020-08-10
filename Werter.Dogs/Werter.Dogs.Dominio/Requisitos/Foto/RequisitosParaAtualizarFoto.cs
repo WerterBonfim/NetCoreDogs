@@ -6,27 +6,27 @@ using Werter.Dogs.Dominio.Validacoes.Foto;
 
 namespace Werter.Dogs.Dominio.Requisitos.Foto
 {
-    public class RequisitosParaCadastrarFoto : IRequisitos
+    public class RequisitosParaAtualizarFoto : IRequisitos
     {
-        public string Nome { get; set; }
+        public Guid Id { get; set; }
         public int Idade { get; set; }
         public int Peso { get; set; }
-        public Guid UsuarioId { get; set; }
+        public string Nome { get; set; }
 
-        private readonly ValidacaoParaCadastrarUmaFoto _validacao;
+        private readonly ValidacaoParaAtualizarFoto _validacao;
         private IEnumerable<string> _erros;
 
-        public RequisitosParaCadastrarFoto()
+        public RequisitosParaAtualizarFoto()
         {
-            _validacao = new ValidacaoParaCadastrarUmaFoto();
+            _validacao = new ValidacaoParaAtualizarFoto();
         }
-
+        
         public bool EValido()
         {
             var resultado = _validacao.Validate(this);
             _erros = resultado.Errors
                 .Select(x => x.ErrorMessage)
-                .ToList();
+                .ToArray();
 
             return resultado.IsValid;
         }

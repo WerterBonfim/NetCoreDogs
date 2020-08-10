@@ -27,11 +27,16 @@ namespace Werter.Dogs.Infra.Mapeamento
             builder.Property(x => x.Peso)                
                 .IsRequired();
 
+            builder.Property(x => x.DataHoraAlteracao);
+
             builder.HasKey(x => x.Id);
-            builder.HasOne(x => x.Usuario)
-                .WithMany(x => x.Fotos)
-                .IsRequired();
-            
+            builder.HasOne(x => x.Usuario);
+
+            builder
+                .HasMany(x => x.Comentarios)
+                .WithOne(x => x.Foto);
+
+
         }
     }
 }

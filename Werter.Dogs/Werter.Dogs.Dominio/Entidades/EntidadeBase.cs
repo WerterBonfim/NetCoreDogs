@@ -11,7 +11,12 @@ namespace Werter.Dogs.Dominio.Entidades
             this.DataHoraAlteracao = DateTime.Now;
         }
 
-        public DateTime DataHoraAlteracao { get; set; }
+        public DateTime DataHoraAlteracao { get; private set; }
+
+        public void AtualizarDtHoraAlteracao()
+        {
+            this.DataHoraAlteracao = DateTime.Now;
+        }
     }
 
 

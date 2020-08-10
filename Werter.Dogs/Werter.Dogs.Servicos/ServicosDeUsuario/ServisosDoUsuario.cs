@@ -15,12 +15,17 @@ namespace Werter.Dogs.Servicos.ServicosDeUsuario
         private readonly ITarefa<RequisitosParaAtualizarUsuario> _servicoDeAtualizacaoDeUsuario;
         private readonly ITarefa<RequisitosParaLogin> _servicoDeLogin;
 
-        public ServisosDoUsuario(IRepositorioCliente repositorioCliente)
+        public ServisosDoUsuario(
+            IRepositorioCliente repositorioCliente,
+            ITarefa<RequisitosParaCriarUsuario> servicoDeCriacaoDeUsuario,
+            ITarefa<RequisitosParaAtualizarUsuario> servicoDeAtualizacaoDeUsuario,
+            ITarefa<RequisitosParaLogin> servicoDeLogin
+        )
         {
             _clienteRepositorio = repositorioCliente;
-            _servicoDeCriacaoDeUsuario = new LidarComCriacaoDeUsuario(_clienteRepositorio);
-            _servicoDeAtualizacaoDeUsuario = new LidarComAtualizacaoDeUsuario(_clienteRepositorio);
-            _servicoDeLogin = new LidarComLoginDoUsuario(_clienteRepositorio);
+            _servicoDeCriacaoDeUsuario = servicoDeCriacaoDeUsuario;
+            _servicoDeAtualizacaoDeUsuario = servicoDeAtualizacaoDeUsuario;
+            _servicoDeLogin = servicoDeLogin;
         }
 
         public IResultado LidarCom(RequisitosParaAtualizarUsuario requisitos)

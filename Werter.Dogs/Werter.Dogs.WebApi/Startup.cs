@@ -3,8 +3,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
+using Werter.Dogs.WebApi.Configuracoes;
 using Werter.Dogs.WebApi.InjecaoDasDependencias;
 using Werter.Dogs.WebApi.Seguranca;
 
@@ -23,6 +25,15 @@ namespace Werter.Dogs.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            
+            var configuracaoAplicacao = new ConfiguracaoAplicacao();
+
+            new ConfigureFromConfigurationOptions<ConfiguracaoAplicacao>(
+                    Configuration
+                        .GetSection("ConfiguracaoAplicacao"))
+                .Configure(configuracaoAplicacao);
+
+            services.AddSingleton(configuracaoAplicacao);
             
             LidarComAsConfiguracoesDeAutenticacao.ConfigurarAutenticacao(services, Configuration);
 
@@ -47,6 +58,8 @@ namespace Werter.Dogs.WebApi
             
             app.UseAuthentication();
             app.UseAuthorization();
+
+            Dependencias.LidarComArquivoEstaticos(app, env);
             
             app.UseCors();
 

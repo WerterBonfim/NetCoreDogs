@@ -5,11 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentValidation" Version="9.0.1" />
+    <PackageReference Include="FluentValidation" Version="9.1.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Werter.Dogs.Compartilhado\Werter.Dogs.Compartilhado.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Validacoes\ValidacaoParaCadastrarUmaFoto.cs" />
+    <Compile Remove="Repositorio\Core\IRepositorioFoto.cs" />
   </ItemGroup>
 
 </Project>

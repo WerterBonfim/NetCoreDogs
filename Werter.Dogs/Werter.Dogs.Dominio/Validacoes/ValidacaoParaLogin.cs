@@ -11,7 +11,7 @@ namespace Werter.Dogs.Dominio.Validacoes
                 .MinimumLength(3)
                 .WithMessage("Login inválido");
 
-            RuleFor(x => x.password)
+            RuleFor(x => x.Senha)
                 .MinimumLength(3)
                 .WithMessage("Login inválido");
         }

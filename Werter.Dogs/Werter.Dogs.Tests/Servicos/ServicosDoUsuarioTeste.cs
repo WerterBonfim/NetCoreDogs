@@ -137,7 +137,7 @@ namespace Werter.Dogs.Tests.Servicos
             var requisitos = new RequisitosParaLogin
             {
                 Login = "werter",
-                password = "werter"
+                Senha = "werter"
             };
 
             var usuarios = ListarUsuarios();
@@ -166,7 +166,7 @@ namespace Werter.Dogs.Tests.Servicos
         {
             return x =>
                 (x.NomeDeUsuario == requisitos.Login || x.Email == requisitos.Login) &&
-                x.Senha == requisitos.password;
+                x.Senha == requisitos.Senha;
         }
 
 
