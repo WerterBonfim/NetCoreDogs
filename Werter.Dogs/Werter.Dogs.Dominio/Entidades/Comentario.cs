@@ -8,6 +8,11 @@ namespace Werter.Dogs.Dominio.Entidades
         public Usuario Usuario { get; private set; }
         public string Texto { get; private set; }
 
+        public Comentario()
+        {
+            
+        }
+
         public Comentario(Foto foto, Usuario usuario, string texto)
         {
             this.Foto = foto;

@@ -16,25 +16,24 @@ namespace Werter.Dogs.Tests.Servicos
         [Test, Category("Foto")]
         public void DeveCadastrarUmaFotoComSucesso()
         {
-            var repositorio = Substitute.For<IRepositorioFoto>();
+            var repositorioFoto = Substitute.For<IRepositorioFoto>();
 
             var requisitos = new RequisitosParaCadastrarFoto
             {
                 Idade = 10,
                 Nome = "nome do cachorro",
                 Peso = 10,
-                UsuarioId =  Guid.NewGuid()
-                
+                UsuarioId = Guid.NewGuid()
             };
 
             requisitos.EValido().Should().BeTrue();
             requisitos.ListaErros().Should().HaveCount(0);
 
-            var servico = new LidarComCadastroDeFoto(repositorio);
+            var servico = new LidarComCadastroDeFoto(repositorioFoto);
+            
 
-            var foto = new Foto(requisitos.Nome, requisitos.Peso, requisitos.Idade);
-            repositorio
-                .Inserir(foto);
+            var foto = new Foto(requisitos.Nome, requisitos.Peso, requisitos.Idade, requisitos.UsuarioId);
+            repositorioFoto.Inserir(foto);
 
             var resultado = servico.LidarCom(requisitos);
             resultado.Sucesso.Should().BeTrue();
@@ -64,7 +63,7 @@ namespace Werter.Dogs.Tests.Servicos
             resultado.Sucesso.Should().BeFalse();
             resultado.Mensagem.Should().BeEquivalentTo("Essa foto não existe");
         }
-        
+
         [Test, Category("Foto")]
         public void DeveExcluirUmaFotoComSucesso()
         {
@@ -84,7 +83,6 @@ namespace Werter.Dogs.Tests.Servicos
 
             var resultado = servico.LidarCom(requisitos);
             resultado.Sucesso.Should().BeTrue();
-            
         }
     }
 }

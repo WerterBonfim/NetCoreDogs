@@ -69,5 +69,14 @@ namespace Werter.Dogs.Infra.Repositorio
         {
             _dbContext.SaveChanges();
         }
+
+        public void Deletar(Guid id)
+        {
+            var usuario = _dbContext.Usuarios.Find(id);
+            if (usuario is null)
+                return;
+            
+            _dbContext.Usuarios.Remove(usuario);
+        }
     }
 }

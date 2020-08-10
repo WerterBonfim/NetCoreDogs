@@ -54,6 +54,15 @@ namespace Werter.Dogs.Infra.Repositorio
             var qtd = _contexto.SaveChanges();
         }
 
+        public void Deletar(Guid id)
+        {
+            var foto = _contexto.Fotos.Find(id);
+            if (foto is null)
+                return;
+            
+            _contexto.Fotos.Remove(foto);
+        }
+
         public void IncrementarQtdAcessos(Guid id)
         {
             var foto = BuscarPorId(id);

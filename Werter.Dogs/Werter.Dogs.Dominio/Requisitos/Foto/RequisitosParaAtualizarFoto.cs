@@ -20,6 +20,8 @@ namespace Werter.Dogs.Dominio.Requisitos.Foto
         {
             _validacao = new ValidacaoParaAtualizarFoto();
         }
+
+        
         
         public bool EValido()
         {

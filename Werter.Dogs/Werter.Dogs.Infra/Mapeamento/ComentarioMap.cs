@@ -11,6 +11,12 @@ namespace Werter.Dogs.Infra.Mapeamento
             builder.ToTable("TB_Comentarios");
 
             builder.Property(x => x.Id);
+            
+            // builder.Property(x => x.UsuarioId)
+            //     .IsRequired();
+            //
+            // builder.Property(x => x.FotoId)
+            //     .IsRequired();
 
             builder.HasKey(x => x.Id);
 

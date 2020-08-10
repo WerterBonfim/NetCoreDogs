@@ -9,10 +9,13 @@ namespace Werter.Dogs.Dominio.Validacoes.Foto
         public ValidacaoParaAtualizarFoto()
         {
             RuleFor(x => x.Nome)
-                .MinimumLength(2).WithMessage("O nome deve ter pelo menos 3 caracteres");
-            
-            
-    
+                .Custom(((nome, context) =>
+                {
+                    if (!string.IsNullOrEmpty(nome) && nome.Length <= 2)
+                        context.AddFailure("Nome inválido, deve ter mais de 2 caracteres");
+                }));
+
+
             RuleFor(x => x.Idade)
                 .GreaterThan(0).WithMessage("Idade deve ser maior que 0")
                 .LessThan(100).WithMessage("Idade inválida");

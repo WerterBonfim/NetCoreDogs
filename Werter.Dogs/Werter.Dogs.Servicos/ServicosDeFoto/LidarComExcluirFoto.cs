@@ -24,10 +24,8 @@ namespace Werter.Dogs.Servicos.ServicosDeFoto
                     listaDeErros: requisitos.ListaErros().ToArray()
                 );
 
-
-            var foto = _repositorioFoto.BuscarPorId(requisitos.Id);
-            if (foto is null)
-                return new ResultadoDaTarefa(true, "Foto não existe");
+            _repositorioFoto.Deletar(requisitos.Id);
+            _repositorioFoto.Salvar();
             
             return new ResultadoDaTarefa(true, "Foto deletada com sucesso");
         }

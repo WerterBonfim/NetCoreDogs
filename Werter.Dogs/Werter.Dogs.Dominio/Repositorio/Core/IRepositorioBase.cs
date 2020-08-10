@@ -14,5 +14,6 @@ namespace Werter.Dogs.Dominio.Repositorio.Core
 
         List<TEntity> Listar(int pagina = 1, int qtdPorPagina = 5);
         void Salvar();
+        void Deletar(Guid id);
     }
 }

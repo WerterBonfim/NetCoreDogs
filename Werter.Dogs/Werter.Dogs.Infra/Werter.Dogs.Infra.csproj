@@ -20,4 +20,10 @@
     <ProjectReference Include="..\Werter.Dogs.Dominio\Werter.Dogs.Dominio.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Migrations\20200810180817_reconfiguracao-dos-comentarios.cs" />
+    <Compile Remove="Migrations\20200810160007_comentarios.cs" />
+    <Compile Remove="Migrations\20200810160007_comentarios.Designer.cs" />
+  </ItemGroup>
+
 </Project>

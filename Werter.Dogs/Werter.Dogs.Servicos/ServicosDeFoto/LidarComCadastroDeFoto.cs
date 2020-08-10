@@ -9,13 +9,13 @@ namespace Werter.Dogs.Servicos.ServicosDeFoto
 {
     public class LidarComCadastroDeFoto : ITarefa<RequisitosParaCadastrarFoto>
     {
-
         private readonly IRepositorioFoto _repositorioFoto;
-        
+
         public LidarComCadastroDeFoto(IRepositorioFoto repositorioFoto)
         {
             _repositorioFoto = repositorioFoto;
         }
+
         public IResultado LidarCom(RequisitosParaCadastrarFoto requisitos)
         {
             if (!requisitos.EValido())
@@ -24,11 +24,11 @@ namespace Werter.Dogs.Servicos.ServicosDeFoto
                     "Não foi possivel cadastrar a foto",
                     listaDeErros: requisitos.ListaErros().ToArray()
                 );
-            
-            var foto = new Foto(requisitos.Nome, requisitos.Peso, requisitos.Idade);
+
+            var foto = new Foto(requisitos.Nome, requisitos.Peso, requisitos.Idade, requisitos.UsuarioId);
             _repositorioFoto.Inserir(foto);
             _repositorioFoto.Salvar();
-            
+
             return new ResultadoDaTarefa(true, "Foto cadastra com sucesso", foto);
         }
     }

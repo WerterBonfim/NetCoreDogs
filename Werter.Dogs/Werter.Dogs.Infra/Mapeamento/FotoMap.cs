@@ -16,15 +16,13 @@ namespace Werter.Dogs.Infra.Mapeamento
                 .HasMaxLength(30)
                 .IsRequired();
 
-
-            builder.Property(x => x.Nome)
-                .HasMaxLength(20)
-                .IsRequired();
-
             builder.Property(x => x.Idade)                
                 .IsRequired();
 
             builder.Property(x => x.Peso)                
+                .IsRequired();
+            
+            builder.Property(x => x.UsuarioId)                
                 .IsRequired();
 
             builder.Property(x => x.DataHoraAlteracao);

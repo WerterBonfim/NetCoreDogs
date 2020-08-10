@@ -12,16 +12,18 @@ namespace Werter.Dogs.Dominio.Entidades
         public int QuantidadeDeAcessos { get; private set; }
         public Usuario Usuario { get; private set; }
         public ICollection<Comentario> Comentarios { get; set; }
+        public Guid UsuarioId { get; set; }
 
         public Foto()
         {
         }
 
-        public Foto(string nome, int peso, int idade)
+        public Foto(string nome, int peso, int idade, Guid usuarioId)
         {
             this.Nome = nome;
             this.Peso = peso;
             this.Idade = idade;
+            this.UsuarioId = usuarioId;
         }
 
         public void AtualizarIdade(int idade)

@@ -1,4 +1,3 @@
-
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -44,16 +43,27 @@ namespace Werter.Dogs.WebApi.Controllers
             return Ok(resultado);
         }
 
-        private void GravarFotoNoDiretorio(IResultado resultado, IFormFile arquivoPostado)
+        [HttpPut]
+        public IActionResult AtualizarFoto([FromBody]RequisitosParaAtualizarFoto requisitos)
         {
-            var foto = (Foto) resultado.Dados;
+            var resultado = _servicosDeFotos.LidarCom(requisitos);
+            if (resultado.Sucesso)
+                return Ok(resultado);
 
-            var arquivo = MontarFullPathArquivo(arquivoPostado, foto);
-            using (var stream = System.IO.File.Create(arquivo))
-            {
-                arquivoPostado.CopyTo(stream);
-            }
+            return BadRequest(resultado);
         }
+
+        [HttpDelete("{id:guid}")]
+        public IActionResult DeletarFoto([FromRoute] RequisitosParaExcluirFoto requisitos)
+        {
+            var resultado = _servicosDeFotos.LidarCom(requisitos);
+            if (resultado.Sucesso)
+                return Ok(resultado);
+
+            return BadRequest(resultado);
+        }
+
+        
 
         #region [ Cadastrar Foto ]
 
@@ -99,6 +109,17 @@ namespace Werter.Dogs.WebApi.Controllers
             var extencao = split[split.Length -1];
             return extencao;
 
+        }
+        
+        private void GravarFotoNoDiretorio(IResultado resultado, IFormFile arquivoPostado)
+        {
+            var foto = (Foto) resultado.Dados;
+
+            var arquivo = MontarFullPathArquivo(arquivoPostado, foto);
+            using (var stream = System.IO.File.Create(arquivo))
+            {
+                arquivoPostado.CopyTo(stream);
+            }
         }
         
         #endregion

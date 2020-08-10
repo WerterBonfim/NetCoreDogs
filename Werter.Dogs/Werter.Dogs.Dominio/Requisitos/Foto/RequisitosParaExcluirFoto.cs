@@ -17,6 +17,11 @@ namespace Werter.Dogs.Dominio.Requisitos.Foto
         {
             _validacao = new ValidacaoDeId();
         }
+        
+        public RequisitosParaExcluirFoto(Guid id) : this()
+        {
+            this.Id = id;
+        }
 
         public bool EValido()
         {
