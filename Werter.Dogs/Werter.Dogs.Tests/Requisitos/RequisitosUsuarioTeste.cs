@@ -1,12 +1,8 @@
-﻿using FluentAssertions;
+﻿using System.Linq;
+using FluentAssertions;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Werter.Dogs.Dominio.Entidades;
-using Werter.Dogs.Dominio.Requisitos;
-using Werter.Dogs.Dominio.Validacoes;
+using Werter.Dogs.Dominio.Requisitos.Usuario;
+using Werter.Dogs.Dominio.Validacoes.Usuario;
 
 namespace Werter.Dogs.Tests.Requisitos
 {
@@ -33,13 +29,11 @@ namespace Werter.Dogs.Tests.Requisitos
             erros.Should().HaveCount(1);
             var erro = erros.FirstOrDefault();
             erro.PropertyName.Should().BeEquivalentTo("Email");
-
         }
 
         [Test]
         public void EmailInvalidoSenhaCom3Caracteres_Verdeiro()
         {
-            
             var requisitos = new RequisitosParaCriarUsuario
             {
                 NomeDeUsuario = "werter",
@@ -54,7 +48,6 @@ namespace Werter.Dogs.Tests.Requisitos
             erros.Should().HaveCount(1);
             var erro = erros.FirstOrDefault();
             erro.PropertyName.Should().BeEquivalentTo("Senha");
-
         }
 
         [Test]

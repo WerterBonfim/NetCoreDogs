@@ -1,12 +1,11 @@
 using System;
 using System.Linq;
 using System.Linq.Expressions;
-using Microsoft.VisualBasic.CompilerServices;
 using Werter.Dogs.Compartilhado;
 using Werter.Dogs.Compartilhado.Interfaces;
 using Werter.Dogs.Dominio.Entidades;
 using Werter.Dogs.Dominio.Repositorio;
-using Werter.Dogs.Dominio.Requisitos;
+using Werter.Dogs.Dominio.Requisitos.Usuario;
 
 namespace Werter.Dogs.Servicos.ServicosDeUsuario
 {
@@ -26,7 +25,7 @@ namespace Werter.Dogs.Servicos.ServicosDeUsuario
                     false,
                     "Não foi possível efetuar o login",
                     listaDeErros: requisitos.ListaErros().ToArray());
-            
+
             var usuario = _clienteRepositorio
                 .Buscar(PorUsuarioESenha(requisitos))
                 .FirstOrDefault();
@@ -37,7 +36,7 @@ namespace Werter.Dogs.Servicos.ServicosDeUsuario
             return new ResultadoDaTarefa(
                 true,
                 "Usuário encontrado com sucesso",
-                dados: usuario);
+                usuario);
         }
 
         private static Expression<Func<Usuario, bool>> PorUsuarioESenha(RequisitosParaLogin requisitos)

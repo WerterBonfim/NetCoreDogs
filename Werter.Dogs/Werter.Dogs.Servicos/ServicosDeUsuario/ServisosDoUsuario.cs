@@ -1,6 +1,6 @@
 ﻿using Werter.Dogs.Compartilhado.Interfaces;
 using Werter.Dogs.Dominio.Repositorio;
-using Werter.Dogs.Dominio.Requisitos;
+using Werter.Dogs.Dominio.Requisitos.Usuario;
 
 namespace Werter.Dogs.Servicos.ServicosDeUsuario
 {
@@ -11,8 +11,8 @@ namespace Werter.Dogs.Servicos.ServicosDeUsuario
 
     {
         private readonly IRepositorioCliente _clienteRepositorio;
-        private readonly ITarefa<RequisitosParaCriarUsuario> _servicoDeCriacaoDeUsuario;
         private readonly ITarefa<RequisitosParaAtualizarUsuario> _servicoDeAtualizacaoDeUsuario;
+        private readonly ITarefa<RequisitosParaCriarUsuario> _servicoDeCriacaoDeUsuario;
         private readonly ITarefa<RequisitosParaLogin> _servicoDeLogin;
 
         public ServisosDoUsuario(

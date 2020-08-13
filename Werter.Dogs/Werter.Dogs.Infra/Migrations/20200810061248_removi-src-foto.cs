@@ -7,16 +7,16 @@ namespace Werter.Dogs.Infra.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "Src",
-                table: "TB_Fotos");
+                "Src",
+                "TB_Fotos");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<string>(
-                name: "Src",
-                table: "TB_Fotos",
-                type: "nvarchar(max)",
+                "Src",
+                "TB_Fotos",
+                "nvarchar(max)",
                 nullable: true);
         }
     }

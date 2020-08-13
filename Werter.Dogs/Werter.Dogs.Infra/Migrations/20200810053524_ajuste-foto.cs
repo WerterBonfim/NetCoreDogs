@@ -8,8 +8,8 @@ namespace Werter.Dogs.Infra.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<Guid>(
-                name: "UsuarioId",
-                table: "TB_Fotos",
+                "UsuarioId",
+                "TB_Fotos",
                 nullable: true,
                 oldClrType: typeof(Guid),
                 oldType: "uniqueidentifier");
@@ -18,9 +18,9 @@ namespace Werter.Dogs.Infra.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<Guid>(
-                name: "UsuarioId",
-                table: "TB_Fotos",
-                type: "uniqueidentifier",
+                "UsuarioId",
+                "TB_Fotos",
+                "uniqueidentifier",
                 nullable: false,
                 oldClrType: typeof(Guid),
                 oldNullable: true);

@@ -1,8 +1,8 @@
-﻿using FluentValidation;
-using System;
-using Werter.Dogs.Dominio.Requisitos;
+﻿using System;
+using FluentValidation;
+using Werter.Dogs.Dominio.Requisitos.Usuario;
 
-namespace Werter.Dogs.Dominio.Validacoes
+namespace Werter.Dogs.Dominio.Validacoes.Usuario
 {
     public sealed class ValidacaoParaAtualizarUsuario : AbstractValidator<RequisitosParaAtualizarUsuario>
     {
@@ -14,13 +14,13 @@ namespace Werter.Dogs.Dominio.Validacoes
                 {
                     if (id == Guid.Empty)
                         context.AddFailure("Id inválido");
-                }); 
+                });
 
             RuleFor(x => x.Nome)
                 .Custom((nome, context) =>
                 {
                     if (!string.IsNullOrEmpty(nome) && nome.Length < 3)
-                        context.AddFailure("Nome", "O nome deve conter pelo menos 3 caracteres");                        
+                        context.AddFailure("Nome", "O nome deve conter pelo menos 3 caracteres");
                 });
 
             RuleFor(x => x.Senha)

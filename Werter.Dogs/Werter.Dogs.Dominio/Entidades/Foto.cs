@@ -1,11 +1,22 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace Werter.Dogs.Dominio.Entidades
 {
     public class Foto : EntidadeBase
     {
+        public Foto()
+        {
+        }
+
+        public Foto(string nome, int peso, int idade, Guid usuarioId)
+        {
+            Nome = nome;
+            Peso = peso;
+            Idade = idade;
+            UsuarioId = usuarioId;
+        }
+
         public string Nome { get; private set; }
         public int Peso { get; private set; }
         public int Idade { get; private set; }
@@ -14,39 +25,27 @@ namespace Werter.Dogs.Dominio.Entidades
         public ICollection<Comentario> Comentarios { get; set; }
         public Guid UsuarioId { get; set; }
 
-        public Foto()
-        {
-        }
-
-        public Foto(string nome, int peso, int idade, Guid usuarioId)
-        {
-            this.Nome = nome;
-            this.Peso = peso;
-            this.Idade = idade;
-            this.UsuarioId = usuarioId;
-        }
-
         public void AtualizarIdade(int idade)
         {
-            this.Idade = idade;
-            this.AtualizarDtHoraAlteracao();
+            Idade = idade;
+            AtualizarDtHoraAlteracao();
         }
 
         public void AtualizarPeso(int peso)
         {
-            this.Peso = peso;
-            this.AtualizarDtHoraAlteracao();
+            Peso = peso;
+            AtualizarDtHoraAlteracao();
         }
 
         public void AtualizarNome(string nome)
         {
-            this.Nome = nome;
-            this.AtualizarDtHoraAlteracao();
+            Nome = nome;
+            AtualizarDtHoraAlteracao();
         }
 
         public void IncrementarQtdAcessos()
         {
-            this.QuantidadeDeAcessos += 1;
+            QuantidadeDeAcessos += 1;
         }
     }
 }

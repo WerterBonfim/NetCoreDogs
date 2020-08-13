@@ -12,8 +12,8 @@ namespace Werter.Dogs.Compartilhado
             var hashString = new SHA256Managed();
 
             var hashValue = hashString.ComputeHash(mensagem);
-            var agg = hashValue.Aggregate("", ((s, b) => s + $"{b:x2}"));
-            
+            var agg = hashValue.Aggregate("", (s, b) => s + $"{b:x2}");
+
             return agg;
         }
     }

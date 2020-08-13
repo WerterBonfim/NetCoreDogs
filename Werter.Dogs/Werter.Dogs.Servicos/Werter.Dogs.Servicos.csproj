@@ -11,14 +11,18 @@
 
   <ItemGroup>
     <Compile Remove="ServicosDeUsuario\Foto\**" />
+    <Compile Remove="Querys\Comentario\**" />
+    <Compile Remove="Querys\IQuery.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Remove="ServicosDeUsuario\Foto\**" />
+    <EmbeddedResource Remove="Querys\Comentario\**" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="ServicosDeUsuario\Foto\**" />
+    <None Remove="Querys\Comentario\**" />
   </ItemGroup>
 
 </Project>

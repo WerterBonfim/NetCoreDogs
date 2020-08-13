@@ -26,7 +26,7 @@ namespace Werter.Dogs.Servicos.ServicosDeFoto
 
             _repositorioFoto.Deletar(requisitos.Id);
             _repositorioFoto.Salvar();
-            
+
             return new ResultadoDaTarefa(true, "Foto deletada com sucesso");
         }
     }

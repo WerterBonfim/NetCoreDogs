@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore;
 using Werter.Dogs.Dominio.Repositorio.Core;
 using Werter.Dogs.Infra.Contexto;
 
@@ -21,10 +22,15 @@ namespace Werter.Dogs.Infra.Repositorio
             return Contexto.Set<TEntity>().Find(id);
         }
 
-        public IQueryable<TEntity> Buscar(Expression<Func<TEntity, bool>> predicate, params object[] includes)
+        public IQueryable<TEntity> Buscar(Expression<Func<TEntity, bool>> predicate, params string[] includes)
         {
-            return Contexto
-                .Set<TEntity>()
+            IQueryable<TEntity> contexto = Contexto.Set<TEntity>();
+
+            foreach (var entity in includes)
+                contexto.Include(entity)
+                    .Load();
+
+            return contexto
                 .AsQueryable()
                 .Where(predicate);
         }
@@ -62,7 +68,7 @@ namespace Werter.Dogs.Infra.Repositorio
 
         private int CalculaSkip(int pagina, int qtdPorPagina)
         {
-            var skip = (pagina * qtdPorPagina) - qtdPorPagina;
+            var skip = pagina * qtdPorPagina - qtdPorPagina;
             return skip;
         }
     }

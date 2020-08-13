@@ -13,7 +13,8 @@ namespace Werter.Dogs.Tests.Servicos
     [TestFixture]
     public class ServicosDaFotoTeste
     {
-        [Test, Category("Foto")]
+        [Test]
+        [Category("Foto")]
         public void DeveCadastrarUmaFotoComSucesso()
         {
             var repositorioFoto = Substitute.For<IRepositorioFoto>();
@@ -30,7 +31,7 @@ namespace Werter.Dogs.Tests.Servicos
             requisitos.ListaErros().Should().HaveCount(0);
 
             var servico = new LidarComCadastroDeFoto(repositorioFoto);
-            
+
 
             var foto = new Foto(requisitos.Nome, requisitos.Peso, requisitos.Idade, requisitos.UsuarioId);
             repositorioFoto.Inserir(foto);
@@ -39,7 +40,30 @@ namespace Werter.Dogs.Tests.Servicos
             resultado.Sucesso.Should().BeTrue();
         }
 
-        [Test, Category("Foto")]
+        [Test]
+        [Category("Foto")]
+        public void DeveExcluirUmaFotoComSucesso()
+        {
+            var repositorio = Substitute.For<IRepositorioFoto>();
+
+            var requisitos = new RequisitosParaExcluirFoto
+            {
+                Id = Guid.NewGuid()
+            };
+
+            requisitos.EValido().Should().BeTrue();
+            requisitos.ListaErros().Should().HaveCount(0);
+
+            var servico = new LidarComExcluirFoto(repositorio);
+            repositorio.BuscarPorId(requisitos.Id).Returns(new Foto());
+
+
+            var resultado = servico.LidarCom(requisitos);
+            resultado.Sucesso.Should().BeTrue();
+        }
+
+        [Test]
+        [Category("Foto")]
         public void ParaUmaFotoQueNaoExisteDeveRetornarErro()
         {
             var repositorio = Substitute.For<IRepositorioFoto>();
@@ -62,27 +86,6 @@ namespace Werter.Dogs.Tests.Servicos
             var resultado = servico.LidarCom(requisitos);
             resultado.Sucesso.Should().BeFalse();
             resultado.Mensagem.Should().BeEquivalentTo("Essa foto não existe");
-        }
-
-        [Test, Category("Foto")]
-        public void DeveExcluirUmaFotoComSucesso()
-        {
-            var repositorio = Substitute.For<IRepositorioFoto>();
-
-            var requisitos = new RequisitosParaExcluirFoto
-            {
-                Id = Guid.NewGuid()
-            };
-
-            requisitos.EValido().Should().BeTrue();
-            requisitos.ListaErros().Should().HaveCount(0);
-
-            var servico = new LidarComExcluirFoto(repositorio);
-            repositorio.BuscarPorId(requisitos.Id).Returns(new Foto());
-
-
-            var resultado = servico.LidarCom(requisitos);
-            resultado.Sucesso.Should().BeTrue();
         }
     }
 }

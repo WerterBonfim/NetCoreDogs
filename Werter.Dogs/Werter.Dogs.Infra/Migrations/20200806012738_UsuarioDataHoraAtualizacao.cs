@@ -8,14 +8,14 @@ namespace Werter.Dogs.Infra.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<DateTime>(
-                name: "DataHoraAlteracao",
-                table: "TB_Usuarios",
+                "DataHoraAlteracao",
+                "TB_Usuarios",
                 nullable: false,
                 defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
 
             migrationBuilder.AddColumn<DateTime>(
-                name: "DataHoraAlteracao",
-                table: "TB_Fotos",
+                "DataHoraAlteracao",
+                "TB_Fotos",
                 nullable: false,
                 defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
         }
@@ -23,12 +23,12 @@ namespace Werter.Dogs.Infra.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "DataHoraAlteracao",
-                table: "TB_Usuarios");
+                "DataHoraAlteracao",
+                "TB_Usuarios");
 
             migrationBuilder.DropColumn(
-                name: "DataHoraAlteracao",
-                table: "TB_Fotos");
+                "DataHoraAlteracao",
+                "TB_Fotos");
         }
     }
 }

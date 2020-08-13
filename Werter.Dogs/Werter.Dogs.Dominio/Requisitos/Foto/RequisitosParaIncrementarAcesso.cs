@@ -8,8 +8,6 @@ namespace Werter.Dogs.Dominio.Requisitos.Foto
 {
     public class RequisitosParaIncrementarAcesso : IRequisitos
     {
-        public Guid Id { get; set; }
-
         private readonly ValidacaoDeId _validacao;
         private IEnumerable<string> _erros;
 
@@ -17,6 +15,8 @@ namespace Werter.Dogs.Dominio.Requisitos.Foto
         {
             _validacao = new ValidacaoDeId();
         }
+
+        public Guid Id { get; set; }
 
         public bool EValido()
         {

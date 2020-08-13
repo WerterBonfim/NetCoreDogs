@@ -8,16 +8,16 @@ namespace Werter.Dogs.Infra.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<Guid>(
-                name: "UsuarioId",
-                table: "TB_Fotos",
+                "UsuarioId",
+                "TB_Fotos",
                 nullable: false,
                 oldClrType: typeof(Guid),
                 oldType: "uniqueidentifier",
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<string>(
-                name: "Nome",
-                table: "TB_Fotos",
+                "Nome",
+                "TB_Fotos",
                 maxLength: 30,
                 nullable: false,
                 oldClrType: typeof(string),
@@ -25,8 +25,8 @@ namespace Werter.Dogs.Infra.Migrations
                 oldMaxLength: 20);
 
             migrationBuilder.CreateTable(
-                name: "TB_Comentarios",
-                columns: table => new
+                "TB_Comentarios",
+                table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
                     DataHoraAlteracao = table.Column<DateTime>(nullable: false),
@@ -38,46 +38,46 @@ namespace Werter.Dogs.Infra.Migrations
                 {
                     table.PrimaryKey("PK_TB_Comentarios", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_TB_Comentarios_TB_Fotos_FotoId",
-                        column: x => x.FotoId,
-                        principalTable: "TB_Fotos",
-                        principalColumn: "Id",
+                        "FK_TB_Comentarios_TB_Fotos_FotoId",
+                        x => x.FotoId,
+                        "TB_Fotos",
+                        "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_TB_Comentarios_TB_Usuarios_UsuarioId",
-                        column: x => x.UsuarioId,
-                        principalTable: "TB_Usuarios",
-                        principalColumn: "Id",
+                        "FK_TB_Comentarios_TB_Usuarios_UsuarioId",
+                        x => x.UsuarioId,
+                        "TB_Usuarios",
+                        "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_TB_Comentarios_FotoId",
-                table: "TB_Comentarios",
-                column: "FotoId");
+                "IX_TB_Comentarios_FotoId",
+                "TB_Comentarios",
+                "FotoId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TB_Comentarios_UsuarioId",
-                table: "TB_Comentarios",
-                column: "UsuarioId");
+                "IX_TB_Comentarios_UsuarioId",
+                "TB_Comentarios",
+                "UsuarioId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "TB_Comentarios");
+                "TB_Comentarios");
 
             migrationBuilder.AlterColumn<Guid>(
-                name: "UsuarioId",
-                table: "TB_Fotos",
-                type: "uniqueidentifier",
+                "UsuarioId",
+                "TB_Fotos",
+                "uniqueidentifier",
                 nullable: true,
                 oldClrType: typeof(Guid));
 
             migrationBuilder.AlterColumn<string>(
-                name: "Nome",
-                table: "TB_Fotos",
-                type: "nvarchar(20)",
+                "Nome",
+                "TB_Fotos",
+                "nvarchar(20)",
                 maxLength: 20,
                 nullable: false,
                 oldClrType: typeof(string),

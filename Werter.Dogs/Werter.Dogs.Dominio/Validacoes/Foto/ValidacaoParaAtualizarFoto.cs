@@ -9,11 +9,11 @@ namespace Werter.Dogs.Dominio.Validacoes.Foto
         public ValidacaoParaAtualizarFoto()
         {
             RuleFor(x => x.Nome)
-                .Custom(((nome, context) =>
+                .Custom((nome, context) =>
                 {
                     if (!string.IsNullOrEmpty(nome) && nome.Length <= 2)
                         context.AddFailure("Nome inválido, deve ter mais de 2 caracteres");
-                }));
+                });
 
 
             RuleFor(x => x.Idade)
@@ -29,7 +29,6 @@ namespace Werter.Dogs.Dominio.Validacoes.Foto
                     if (id == Guid.Empty)
                         context.AddFailure("Id inválido");
                 });
-
         }
     }
 }

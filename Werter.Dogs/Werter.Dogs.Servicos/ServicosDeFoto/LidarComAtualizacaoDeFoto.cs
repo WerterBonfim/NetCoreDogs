@@ -33,7 +33,7 @@ namespace Werter.Dogs.Servicos.ServicosDeFoto
             foto.AtualizarIdade(requisitos.Idade);
             foto.AtualizarPeso(requisitos.Peso);
             foto.AtualizarNome(requisitos.Nome);
-            
+
             _repositorioFoto.Atualizar(foto);
             _repositorioFoto.Salvar();
 

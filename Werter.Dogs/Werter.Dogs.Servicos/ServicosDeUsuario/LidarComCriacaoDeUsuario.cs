@@ -3,7 +3,7 @@ using Werter.Dogs.Compartilhado;
 using Werter.Dogs.Compartilhado.Interfaces;
 using Werter.Dogs.Dominio.Entidades;
 using Werter.Dogs.Dominio.Repositorio;
-using Werter.Dogs.Dominio.Requisitos;
+using Werter.Dogs.Dominio.Requisitos.Usuario;
 
 namespace Werter.Dogs.Servicos.ServicosDeUsuario
 {
@@ -19,7 +19,8 @@ namespace Werter.Dogs.Servicos.ServicosDeUsuario
         public IResultado LidarCom(RequisitosParaCriarUsuario requisitos)
         {
             if (!requisitos.EValido())
-                return new ResultadoDaTarefa(false, "Não foi possivel criar o usuário", requisitos.ListaErros()?.ToArray());
+                return new ResultadoDaTarefa(false, "Não foi possivel criar o usuário",
+                    requisitos.ListaErros()?.ToArray());
 
             if (NomeDeUsuarioJaFoiRegistrado(requisitos.NomeDeUsuario))
                 return new ResultadoDaTarefa(false, "Nome de usuário já foi registrado");
@@ -27,11 +28,11 @@ namespace Werter.Dogs.Servicos.ServicosDeUsuario
             if (EmailJaFoiRegistrado(requisitos.Email))
                 return new ResultadoDaTarefa(false, "Email já registrado");
 
-            var senhaCriptografada = HashUtil.GetSha256FromString(requisitos.Senha);            
+            var senhaCriptografada = HashUtil.GetSha256FromString(requisitos.Senha);
             var usuario = new Usuario(requisitos.NomeDeUsuario, requisitos.Email, senhaCriptografada);
             _clienteRepositorio.Inserir(usuario);
             _clienteRepositorio.Salvar();
-            
+
             return new ResultadoDaTarefa(true, "Cadastrado com sucesso");
         }
 

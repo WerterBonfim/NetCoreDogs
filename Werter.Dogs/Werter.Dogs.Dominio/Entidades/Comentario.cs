@@ -2,22 +2,29 @@ using System;
 
 namespace Werter.Dogs.Dominio.Entidades
 {
-    public sealed class Comentario : EntidadeBase
+    public class Comentario : EntidadeBase
     {
-        public Foto Foto { get; private set; }
-        public Usuario Usuario { get; private set; }
-        public string Texto { get; private set; }
-
         public Comentario()
         {
-            
         }
 
-        public Comentario(Foto foto, Usuario usuario, string texto)
+        public Comentario(Guid fotoId, Guid usuarioId, string texto)
         {
-            this.Foto = foto;
-            this.Usuario = usuario;
-            this.Texto = texto;
+            FotoId = fotoId;
+            UsuarioId = usuarioId;
+            Texto = texto;
+        }
+
+        public Guid FotoId { get; set; }
+        public Foto Foto { get; private set; }
+        public Guid UsuarioId { get; set; }
+        public virtual Usuario Usuario { get; set; }
+        public string Texto { get; private set; }
+
+        public void AtualizarComentario(string texto)
+        {
+            Texto = texto;
+            AtualizarDtHoraAlteracao();
         }
     }
 }

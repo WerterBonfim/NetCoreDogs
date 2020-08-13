@@ -8,11 +8,6 @@ namespace Werter.Dogs.Dominio.Requisitos.Foto
 {
     public class RequisitosParaCadastrarFoto : IRequisitos
     {
-        public string Nome { get; set; }
-        public int Idade { get; set; }
-        public int Peso { get; set; }
-        public Guid UsuarioId { get; set; }
-
         private readonly ValidacaoParaCadastrarUmaFoto _validacao;
         private IEnumerable<string> _erros;
 
@@ -20,6 +15,11 @@ namespace Werter.Dogs.Dominio.Requisitos.Foto
         {
             _validacao = new ValidacaoParaCadastrarUmaFoto();
         }
+
+        public string Nome { get; set; }
+        public int Idade { get; set; }
+        public int Peso { get; set; }
+        public Guid UsuarioId { get; set; }
 
         public bool EValido()
         {

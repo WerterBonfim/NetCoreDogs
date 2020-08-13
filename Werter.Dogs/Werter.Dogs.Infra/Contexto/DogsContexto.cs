@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Werter.Dogs.Dominio.Entidades;
+using Werter.Dogs.Infra.Mapeamento;
 
 namespace Werter.Dogs.Infra.Contexto
 {
@@ -12,17 +13,17 @@ namespace Werter.Dogs.Infra.Contexto
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var stringDeConexao = "Server=localhost,1433;Database=DB_Dogs;User Id=sa;Password=!007Dogs;";
-            optionsBuilder.UseSqlServer(stringDeConexao);
-            
+            optionsBuilder
+                //.UseLoggerFactory(LoggerFactory.Create(builder => builder.AddConsole()))
+                .UseSqlServer(stringDeConexao);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {            
-
+        {
             //this.Database.EnsureCreated();
-            modelBuilder.ApplyConfiguration(new Mapeamento.UsuarioMap());
-            modelBuilder.ApplyConfiguration(new Mapeamento.FotoMap());
-            modelBuilder.ApplyConfiguration(new Mapeamento.ComentarioMap());
+            modelBuilder.ApplyConfiguration(new UsuarioMap());
+            modelBuilder.ApplyConfiguration(new FotoMap());
+            modelBuilder.ApplyConfiguration(new ComentarioMap());
         }
     }
 }

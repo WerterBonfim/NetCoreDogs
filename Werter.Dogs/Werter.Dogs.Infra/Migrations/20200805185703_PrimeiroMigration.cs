@@ -8,8 +8,8 @@ namespace Werter.Dogs.Infra.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "TB_Usuarios",
-                columns: table => new
+                "TB_Usuarios",
+                table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
                     Nome = table.Column<string>(maxLength: 30, nullable: true),
@@ -17,14 +17,11 @@ namespace Werter.Dogs.Infra.Migrations
                     Email = table.Column<string>(maxLength: 50, nullable: false),
                     Senha = table.Column<string>(maxLength: 90, nullable: false)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_TB_Usuarios", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_TB_Usuarios", x => x.Id); });
 
             migrationBuilder.CreateTable(
-                name: "TB_Fotos",
-                columns: table => new
+                "TB_Fotos",
+                table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
                     Nome = table.Column<string>(maxLength: 20, nullable: false),
@@ -38,26 +35,26 @@ namespace Werter.Dogs.Infra.Migrations
                 {
                     table.PrimaryKey("PK_TB_Fotos", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_TB_Fotos_TB_Usuarios_UsuarioId",
-                        column: x => x.UsuarioId,
-                        principalTable: "TB_Usuarios",
-                        principalColumn: "Id",
+                        "FK_TB_Fotos_TB_Usuarios_UsuarioId",
+                        x => x.UsuarioId,
+                        "TB_Usuarios",
+                        "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_TB_Fotos_UsuarioId",
-                table: "TB_Fotos",
-                column: "UsuarioId");
+                "IX_TB_Fotos_UsuarioId",
+                "TB_Fotos",
+                "UsuarioId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "TB_Fotos");
+                "TB_Fotos");
 
             migrationBuilder.DropTable(
-                name: "TB_Usuarios");
+                "TB_Usuarios");
         }
     }
 }

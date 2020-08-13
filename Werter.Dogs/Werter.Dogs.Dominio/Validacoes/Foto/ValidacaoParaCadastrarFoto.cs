@@ -10,7 +10,7 @@ namespace Werter.Dogs.Dominio.Validacoes.Foto
         {
             RuleFor(x => x.Nome)
                 .MinimumLength(2).WithMessage("O nome deve ter pelo menos 3 caracteres");
-    
+
             RuleFor(x => x.Idade)
                 .GreaterThan(0).WithMessage("Idade deve ser maior que 0")
                 .LessThan(100).WithMessage("Idade inválida");
@@ -24,8 +24,6 @@ namespace Werter.Dogs.Dominio.Validacoes.Foto
                     if (id == Guid.Empty)
                         context.AddFailure("Id inválido");
                 });
-
-
         }
     }
 }

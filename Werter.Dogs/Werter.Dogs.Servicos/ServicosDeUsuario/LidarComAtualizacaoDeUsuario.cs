@@ -1,8 +1,9 @@
 ﻿using System.Linq;
 using Werter.Dogs.Compartilhado;
 using Werter.Dogs.Compartilhado.Interfaces;
+using Werter.Dogs.Dominio.Entidades;
 using Werter.Dogs.Dominio.Repositorio;
-using Werter.Dogs.Dominio.Requisitos;
+using Werter.Dogs.Dominio.Requisitos.Usuario;
 
 namespace Werter.Dogs.Servicos.ServicosDeUsuario
 {
@@ -19,7 +20,7 @@ namespace Werter.Dogs.Servicos.ServicosDeUsuario
         {
             if (!requisitos.EValido())
                 return new ResultadoDaTarefa(
-                    false, 
+                    false,
                     "Não foi possivel atualizar os dados do usuario",
                     listaDeErros: requisitos.ListaErros()?.ToArray());
 
@@ -33,7 +34,7 @@ namespace Werter.Dogs.Servicos.ServicosDeUsuario
             return new ResultadoDaTarefa(true, "Usuário atualizado com sucesso");
         }
 
-        private static void AtualizarSenhaCasoFoiInformado(RequisitosParaAtualizarUsuario requisitos, Dominio.Entidades.Usuario usuario)
+        private static void AtualizarSenhaCasoFoiInformado(RequisitosParaAtualizarUsuario requisitos, Usuario usuario)
         {
             if (!string.IsNullOrEmpty(requisitos.Senha))
                 usuario.AtualizarSenha(requisitos.Senha);

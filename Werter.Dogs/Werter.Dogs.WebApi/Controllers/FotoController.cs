@@ -18,8 +18,8 @@ namespace Werter.Dogs.WebApi.Controllers
     [ApiController]
     public class FotoController : ControllerBase
     {
-        private readonly IRepositorioFoto _repositorioFoto;
         private readonly ConfiguracaoAplicacao _configuracao;
+        private readonly IRepositorioFoto _repositorioFoto;
         private readonly ServicosDeFotos _servicosDeFotos;
 
         public FotoController(
@@ -33,18 +33,17 @@ namespace Werter.Dogs.WebApi.Controllers
             _servicosDeFotos = servicosDeFotos;
         }
 
-       
 
         [HttpPost]
         [Route("incrementar-acesso")]
-        public IActionResult IncrementarQtdAcessos([FromBody]RequisitosParaIncrementarAcesso requisitos)
+        public IActionResult IncrementarQtdAcessos([FromBody] RequisitosParaIncrementarAcesso requisitos)
         {
             var resultado = _servicosDeFotos.LidarCom(requisitos);
             return Ok(resultado);
         }
 
         [HttpPut]
-        public IActionResult AtualizarFoto([FromBody]RequisitosParaAtualizarFoto requisitos)
+        public IActionResult AtualizarFoto([FromBody] RequisitosParaAtualizarFoto requisitos)
         {
             var resultado = _servicosDeFotos.LidarCom(requisitos);
             if (resultado.Sucesso)
@@ -63,7 +62,6 @@ namespace Werter.Dogs.WebApi.Controllers
             return BadRequest(resultado);
         }
 
-        
 
         #region [ Cadastrar Foto ]
 
@@ -74,9 +72,9 @@ namespace Werter.Dogs.WebApi.Controllers
         )
         {
             var arquivoPostado = files.FirstOrDefault();
-            
+
             // TODO: Definir 2 MB como tamanho maximo. Validar extenção do arquivo
-            var arquivoInvalido = (arquivoPostado.Length <= 0);
+            var arquivoInvalido = arquivoPostado.Length <= 0;
             if (arquivoInvalido)
                 return StatusCode(417, new {Mensagem = "Arquivo ou imagem inválida"});
 
@@ -106,11 +104,10 @@ namespace Werter.Dogs.WebApi.Controllers
         private static string ObterExtencaoArquivo(IFormFile arquivoPostado)
         {
             var split = arquivoPostado.FileName.Split('.');
-            var extencao = split[split.Length -1];
+            var extencao = split[split.Length - 1];
             return extencao;
-
         }
-        
+
         private void GravarFotoNoDiretorio(IResultado resultado, IFormFile arquivoPostado)
         {
             var foto = (Foto) resultado.Dados;
@@ -121,7 +118,7 @@ namespace Werter.Dogs.WebApi.Controllers
                 arquivoPostado.CopyTo(stream);
             }
         }
-        
+
         #endregion
     }
 }

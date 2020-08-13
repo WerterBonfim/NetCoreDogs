@@ -1,5 +1,3 @@
-
-
 namespace Werter.Dogs.WebApi.Configuracoes
 {
     public class ConfiguracaoAplicacao

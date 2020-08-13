@@ -28,15 +28,13 @@ namespace Werter.Dogs.Infra.Mapeamento
             builder.Property(x => x.Senha)
                 .HasMaxLength(90)
                 .IsRequired();
-            
+
             builder.Property(x => x.DataHoraAlteracao);
 
             builder.HasKey(x => x.Id);
             builder
                 .HasMany(x => x.Fotos)
-                .WithOne(x => x.Usuario)
-                .OnDelete(DeleteBehavior.Cascade);
-
+                .WithOne(x => x.Usuario);
         }
     }
 }

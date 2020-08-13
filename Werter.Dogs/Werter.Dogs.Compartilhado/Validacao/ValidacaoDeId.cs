@@ -8,12 +8,11 @@ namespace Werter.Dogs.Compartilhado.Validacao
         public ValidacaoDeId()
         {
             RuleFor(x => x)
-                .Custom(((guid, context) =>
+                .Custom((guid, context) =>
                 {
                     if (guid == Guid.Empty)
                         context.AddFailure("Id inválido");
-                }));
-
+                });
         }
     }
 }

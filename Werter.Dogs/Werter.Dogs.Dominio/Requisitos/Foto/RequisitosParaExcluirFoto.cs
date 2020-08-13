@@ -8,8 +8,6 @@ namespace Werter.Dogs.Dominio.Requisitos.Foto
 {
     public class RequisitosParaExcluirFoto : IRequisitos
     {
-        public Guid Id { get; set; }
-
         private readonly ValidacaoDeId _validacao;
         private IEnumerable<string> _erros;
 
@@ -17,11 +15,13 @@ namespace Werter.Dogs.Dominio.Requisitos.Foto
         {
             _validacao = new ValidacaoDeId();
         }
-        
+
         public RequisitosParaExcluirFoto(Guid id) : this()
         {
-            this.Id = id;
+            Id = id;
         }
+
+        public Guid Id { get; set; }
 
         public bool EValido()
         {

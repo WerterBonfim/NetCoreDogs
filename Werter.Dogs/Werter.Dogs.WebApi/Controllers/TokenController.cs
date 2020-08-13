@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Werter.Dogs.Dominio.Entidades;
-using Werter.Dogs.Dominio.Requisitos;
+using Werter.Dogs.Dominio.Requisitos.Usuario;
 using Werter.Dogs.Servicos.ServicosDeUsuario;
 using Werter.Dogs.WebApi.Seguranca;
 using Werter.Dogs.WebApi.ViewModel;
@@ -42,7 +42,7 @@ namespace Werter.Dogs.WebApi.Controllers
 
             var identity = new ClaimsIdentity(new[]
                 {
-                    new Claim(ClaimTypes.Name, userId),
+                    new Claim(ClaimTypes.Name, userId)
                 }
             );
 
@@ -66,6 +66,7 @@ namespace Werter.Dogs.WebApi.Controllers
             var autenticacao = new
             {
                 autenticado = true,
+                usuarioId = userId,
                 criado = dtCriacao.ToString("yyy-mm-dd HH:mm:ss"),
                 expiracao = dtExpiracao.ToString("yyyy-mm-dd HH:mm:ss"),
                 tokenDeAcesso = token,
@@ -75,6 +76,4 @@ namespace Werter.Dogs.WebApi.Controllers
             return Ok(autenticacao);
         }
     }
-
-    
 }

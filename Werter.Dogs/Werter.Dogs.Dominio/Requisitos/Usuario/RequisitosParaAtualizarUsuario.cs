@@ -2,23 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using Werter.Dogs.Compartilhado.Interfaces;
-using Werter.Dogs.Dominio.Validacoes;
+using Werter.Dogs.Dominio.Validacoes.Usuario;
 
-namespace Werter.Dogs.Dominio.Requisitos
+namespace Werter.Dogs.Dominio.Requisitos.Usuario
 {
     public sealed class RequisitosParaAtualizarUsuario : IRequisitos
     {
         private readonly ValidacaoParaAtualizarUsuario _validacoes;
         private IEnumerable<string> _erros;
 
-        public Guid Id { get; set; }
-        public string Nome { get; set; }
-        public string Senha { get; set; }
-
         public RequisitosParaAtualizarUsuario()
         {
             _validacoes = new ValidacaoParaAtualizarUsuario();
         }
+
+        public Guid Id { get; set; }
+        public string Nome { get; set; }
+        public string Senha { get; set; }
 
 
         public bool EValido()

@@ -1,9 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Internal;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using Microsoft.EntityFrameworkCore;
+﻿using System.Linq;
 using Werter.Dogs.Dominio.Entidades;
 using Werter.Dogs.Dominio.Repositorio;
 using Werter.Dogs.Infra.Contexto;

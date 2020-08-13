@@ -46,7 +46,6 @@ namespace Werter.Dogs.WebApi.Seguranca
                 parametrosDeValidacao.ValidIssuer = configuracaoDeToken.Issuer;
                 parametrosDeValidacao.ValidateIssuerSigningKey = true;
                 parametrosDeValidacao.ClockSkew = TimeSpan.Zero;
-                
             });
         }
     }

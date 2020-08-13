@@ -8,19 +8,35 @@ namespace Werter.Dogs.Servicos.ServicosDeComentario
         ITarefa<RequisitosParaAlterarComentario>,
         ITarefa<RequisitosParaExcluirComentario>
     {
-        public IResultado LidarCom(RequisitosParaCriarComentario requisitos)
+        private readonly ITarefa<RequisitosParaAlterarComentario> _servicoAlterarComentario;
+        private readonly ITarefa<RequisitosParaCriarComentario> _servicoCriarComentario;
+        private readonly ITarefa<RequisitosParaExcluirComentario> _servicoExcluirComentario;
+
+        public ServicosDeComentario(
+            ITarefa<RequisitosParaCriarComentario> servicoCriarComentario,
+            ITarefa<RequisitosParaAlterarComentario> servicoAlterarComentario,
+            ITarefa<RequisitosParaExcluirComentario> servicoExcluirComentario
+        )
         {
-            throw new System.NotImplementedException();
+            _servicoCriarComentario = servicoCriarComentario;
+            _servicoAlterarComentario = servicoAlterarComentario;
+            _servicoExcluirComentario = servicoExcluirComentario;
         }
 
         public IResultado LidarCom(RequisitosParaAlterarComentario requisitos)
         {
-            throw new System.NotImplementedException();
+            return _servicoAlterarComentario.LidarCom(requisitos);
+        }
+
+
+        public IResultado LidarCom(RequisitosParaCriarComentario requisitos)
+        {
+            return _servicoCriarComentario.LidarCom(requisitos);
         }
 
         public IResultado LidarCom(RequisitosParaExcluirComentario requisitos)
         {
-            throw new System.NotImplementedException();
+            return _servicoExcluirComentario.LidarCom(requisitos);
         }
     }
 }

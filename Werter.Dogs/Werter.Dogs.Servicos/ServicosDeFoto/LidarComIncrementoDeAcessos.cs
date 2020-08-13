@@ -14,7 +14,7 @@ namespace Werter.Dogs.Servicos.ServicosDeFoto
         {
             _repositorioFoto = repositorioFoto;
         }
-        
+
         public IResultado LidarCom(RequisitosParaIncrementarAcesso requisitos)
         {
             if (!requisitos.EValido())
@@ -23,9 +23,9 @@ namespace Werter.Dogs.Servicos.ServicosDeFoto
                     "Não foi possivel incrementar o acesso da foto",
                     listaDeErros: requisitos.ListaErros().ToArray()
                 );
-            
+
             _repositorioFoto.IncrementarQtdAcessos(requisitos.Id);
-            
+
             return new ResultadoDaTarefa(true, "Incrementado com sucesso");
         }
     }
