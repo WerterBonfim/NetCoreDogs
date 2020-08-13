@@ -15,6 +15,7 @@
   <ItemGroup>
     <Compile Remove="Validacoes\ValidacaoParaCadastrarUmaFoto.cs" />
     <Compile Remove="Repositorio\Core\IRepositorioFoto.cs" />
+    <Compile Remove="Dtos\FeedDto.cs" />
   </ItemGroup>
 
 </Project>

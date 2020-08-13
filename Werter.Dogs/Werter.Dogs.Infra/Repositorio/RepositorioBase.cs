@@ -45,13 +45,22 @@ namespace Werter.Dogs.Infra.Repositorio
             Contexto.Set<TEntity>().Add(entity);
         }
 
-        public List<TEntity> Listar(int pagina = 1, int qtdPorPagina = 5)
+        public IQueryable<TEntity> Listar(int pagina = 1, int qtdPorPagina = 5, params string[] includes)
         {
             var skip = CalculaSkip(pagina, qtdPorPagina);
-            return Contexto.Set<TEntity>()
-                .Take(pagina)
-                .Skip(skip)
-                .ToList();
+
+            var contexto = Contexto.Set<TEntity>();
+                
+
+            foreach (var item in includes)
+            {
+                contexto
+                    .Include(item);
+            }
+            
+            return contexto
+                .Take(qtdPorPagina)
+                .Skip(skip);
         }
 
         public void Salvar()

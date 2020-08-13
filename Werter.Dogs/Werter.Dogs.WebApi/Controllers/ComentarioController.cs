@@ -66,7 +66,10 @@ namespace Werter.Dogs.WebApi.Controllers
             catch (Exception e)
             {
                 //TODO: Implementar serivo de log
-                return BadRequest("Ocorreu um erro interno ao tentar listar os comentário da foto");
+                var texto = "Ocorreu um erro interno ao " +
+                            "tentar listar os comentário da foto .Erro:" +
+                            e.Message;
+                return BadRequest(texto);
             }
         }
     }

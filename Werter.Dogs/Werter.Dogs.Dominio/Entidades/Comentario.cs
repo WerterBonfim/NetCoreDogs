@@ -16,7 +16,7 @@ namespace Werter.Dogs.Dominio.Entidades
         }
 
         public Guid FotoId { get; set; }
-        public Foto Foto { get; private set; }
+        public virtual Foto Foto { get; set; }
         public Guid UsuarioId { get; set; }
         public virtual Usuario Usuario { get; set; }
         public string Texto { get; private set; }

@@ -43,7 +43,10 @@ namespace Werter.Dogs.WebApi.InjecaoDasDependencias
             services.AddTransient<ITarefa<RequisitosParaAlterarComentario>, LidarComAlteracaoDeComentario>();
             services.AddTransient<ITarefa<RequisitosParaExcluirComentario>, LidarComExcluirComentario>();
 
+            // Querys
             services.AddTransient<IComentarioQuery, ComentarioQuerys>();
+            services.AddTransient<IFeedQuery, FeedQuery>();
+            
 
             services.AddTransient<ServisosDoUsuario, ServisosDoUsuario>();
             services.AddTransient<ServicosDeFotos, ServicosDeFotos>();

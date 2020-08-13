@@ -21,8 +21,8 @@ namespace Werter.Dogs.Dominio.Entidades
         public int Peso { get; private set; }
         public int Idade { get; private set; }
         public int QuantidadeDeAcessos { get; private set; }
-        public Usuario Usuario { get; private set; }
-        public ICollection<Comentario> Comentarios { get; set; }
+        public virtual Usuario Usuario { get;  set; }
+        public virtual ICollection<Comentario> Comentarios { get; set; }
         public Guid UsuarioId { get; set; }
 
         public void AtualizarIdade(int idade)

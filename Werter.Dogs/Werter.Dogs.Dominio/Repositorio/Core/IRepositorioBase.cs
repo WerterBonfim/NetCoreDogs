@@ -12,7 +12,7 @@ namespace Werter.Dogs.Dominio.Repositorio.Core
         void Atualizar(TEntity entity);
         void Inserir(TEntity entity);
 
-        List<TEntity> Listar(int pagina = 1, int qtdPorPagina = 5);
+        IQueryable<TEntity> Listar(int pagina = 1, int qtdPorPagina = 5, params string[] includes);
         void Salvar();
         void Deletar(Guid id);
     }
