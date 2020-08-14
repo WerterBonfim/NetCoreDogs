@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Werter.Dogs.Servicos.Querys.Interfaces;
@@ -19,8 +20,21 @@ namespace Werter.Dogs.WebApi.Controllers
         [HttpGet]
         public IActionResult ListarFeed()
         {
-            var feeds = _feedQuery.ListarFeed();
-            return Ok(feeds);
+            var resultado = _feedQuery.ListarFeed();
+            if (resultado.Sucesso)
+                return Ok(resultado);
+
+            return BadRequest(resultado);
+        }
+
+        [HttpGet("usuario/{id:guid}")]
+        public IActionResult ListarFeedUsuario(Guid id)
+        {
+            var resultado = _feedQuery.ListarFeedUsuario(id, 1, 6);
+            if (resultado.Sucesso)
+                return Ok(resultado);
+
+            return BadRequest(resultado);
         }
     }
 }

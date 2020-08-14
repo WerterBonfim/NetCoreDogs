@@ -16,6 +16,8 @@
     <Compile Remove="Validacoes\ValidacaoParaCadastrarUmaFoto.cs" />
     <Compile Remove="Repositorio\Core\IRepositorioFoto.cs" />
     <Compile Remove="Dtos\FeedDto.cs" />
+    <Compile Remove="Conversoes\ConversorBase.cs" />
+    <Compile Remove="Repositorio\IRepositorioFeed.cs" />
   </ItemGroup>
 
 </Project>

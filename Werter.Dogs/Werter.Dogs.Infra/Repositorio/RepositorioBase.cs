@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
@@ -44,25 +43,7 @@ namespace Werter.Dogs.Infra.Repositorio
         {
             Contexto.Set<TEntity>().Add(entity);
         }
-
-        public IQueryable<TEntity> Listar(int pagina = 1, int qtdPorPagina = 5, params string[] includes)
-        {
-            var skip = CalculaSkip(pagina, qtdPorPagina);
-
-            var contexto = Contexto.Set<TEntity>();
-                
-
-            foreach (var item in includes)
-            {
-                contexto
-                    .Include(item);
-            }
-            
-            return contexto
-                .Take(qtdPorPagina)
-                .Skip(skip);
-        }
-
+        
         public void Salvar()
         {
             Contexto.SaveChanges();
@@ -75,7 +56,14 @@ namespace Werter.Dogs.Infra.Repositorio
                 Contexto.Set<TEntity>().Remove(entidade);
         }
 
-        private int CalculaSkip(int pagina, int qtdPorPagina)
+        public IQueryable<TEntity> Queryable()
+        {
+            return Contexto.Set<TEntity>()
+                .AsQueryable()
+                .AsNoTracking();
+        }
+
+        public int CalculaSkip(int pagina, int qtdPorPagina)
         {
             var skip = pagina * qtdPorPagina - qtdPorPagina;
             return skip;
