@@ -40,6 +40,8 @@ namespace Werter.Dogs.WebApi.Seguranca
 
 
                 var parametrosDeValidacao = x.TokenValidationParameters;
+                var key = configuracaoDeAutenticacao.Key.ToString();
+                Console.WriteLine(key);
 
                 parametrosDeValidacao.IssuerSigningKey = configuracaoDeAutenticacao.Key;
                 parametrosDeValidacao.ValidAudience = configuracaoDeToken.Audience;

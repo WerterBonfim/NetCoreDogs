@@ -18,7 +18,7 @@ namespace Werter.Dogs.WebApi.Controllers
         }
 
         [HttpGet]
-        public IActionResult ListarFeed()
+        public IActionResult ListarFeed([FromQuery] int pagina)
         {
             var resultado = _feedQuery.ListarFeed();
             if (resultado.Sucesso)
@@ -28,7 +28,7 @@ namespace Werter.Dogs.WebApi.Controllers
         }
 
         [HttpGet("usuario/{id:guid}")]
-        public IActionResult ListarFeedUsuario(Guid id)
+        public IActionResult ListarFeedUsuario([FromRoute]Guid id, [FromQuery]int pagina)
         {
             var resultado = _feedQuery.ListarFeedUsuario(id, 1, 6);
             if (resultado.Sucesso)

@@ -38,11 +38,11 @@ namespace Werter.Dogs.WebApi.Controllers
 
             var usuario = ((Usuario) resultado.Dados).ParaViewModel();
 
-            var userId = usuario.Id.ToString();
+            var usuarioId = usuario.Id.ToString();
 
             var identity = new ClaimsIdentity(new[]
                 {
-                    new Claim(ClaimTypes.Name, userId)
+                    new Claim(ClaimTypes.NameIdentifier, usuarioId)
                 }
             );
 
@@ -66,7 +66,7 @@ namespace Werter.Dogs.WebApi.Controllers
             var autenticacao = new
             {
                 autenticado = true,
-                usuarioId = userId,
+                usuario,
                 criado = dtCriacao.ToString("yyy-mm-dd HH:mm:ss"),
                 expiracao = dtExpiracao.ToString("yyyy-mm-dd HH:mm:ss"),
                 tokenDeAcesso = token,
