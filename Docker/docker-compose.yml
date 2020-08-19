@@ -1,0 +1,18 @@
+version: '3.4'
+
+services:
+    db:
+        image: mcr.microsoft.com/mssql/server:2019-latest
+        environment: 
+            ACCEPT_EULA: y
+            SA_PASSWORD: !123Dogs
+
+    api:
+        image: 
+
+
+
+
+networks: 
+    werter_net:
+        driver: bridge

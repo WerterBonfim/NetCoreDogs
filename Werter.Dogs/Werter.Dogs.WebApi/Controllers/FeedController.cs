@@ -18,7 +18,7 @@ namespace Werter.Dogs.WebApi.Controllers
         }
 
         [HttpGet]
-        public IActionResult ListarFeed([FromQuery] int pagina)
+        public IActionResult ListarFeed([FromQuery] int pagina = 1)
         {
             var resultado = _feedQuery.ListarFeed();
             if (resultado.Sucesso)

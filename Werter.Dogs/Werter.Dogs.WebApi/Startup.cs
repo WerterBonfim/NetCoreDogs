@@ -53,17 +53,20 @@ namespace Werter.Dogs.WebApi
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            
+            app.UseCors(x =>
+            {
+                x.AllowAnyOrigin();
+                x.AllowAnyHeader();
+                
+            });
 
             app.UseAuthentication();
             app.UseAuthorization();
 
             Dependencias.LidarComArquivoEstaticos(app, env);
 
-            app.UseCors(x =>
-            {
-                x.AllowAnyOrigin();
-                x.AllowAnyHeader();
-            });
+            
 
             app.UseMiniProfiler();
 
