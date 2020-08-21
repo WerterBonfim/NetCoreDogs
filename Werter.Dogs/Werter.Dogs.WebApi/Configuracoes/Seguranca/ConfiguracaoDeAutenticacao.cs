@@ -1,7 +1,7 @@
 ﻿using System.Security.Cryptography;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Werter.Dogs.WebApi.Seguranca
+namespace Werter.Dogs.WebApi.Configuracoes.Seguranca
 {
     public class ConfiguracaoDeAutenticacao
     {

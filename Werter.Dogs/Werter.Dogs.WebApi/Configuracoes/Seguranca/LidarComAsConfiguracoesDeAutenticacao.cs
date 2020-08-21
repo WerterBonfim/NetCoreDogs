@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
-namespace Werter.Dogs.WebApi.Seguranca
+namespace Werter.Dogs.WebApi.Configuracoes.Seguranca
 {
     public class LidarComAsConfiguracoesDeAutenticacao
     {

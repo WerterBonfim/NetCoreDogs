@@ -11,17 +11,19 @@ namespace Werter.Dogs.Infra.Contexto
         public DbSet<Foto> Fotos { get; set; }
         public DbSet<Comentario> Comentarios { get; set; }
 
-        public DogsContexto(string stringDeConexao)
+        public DogsContexto(string stringDeConexao) 
         {
             _stringDeConexao = stringDeConexao;
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            
             //var stringDeConexao = "Server=localhost,1433;Database=DB_Dogs;User Id=sa;Password=!007Dogs;";
             optionsBuilder
                 //.UseLoggerFactory(LoggerFactory.Create(builder => builder.AddConsole()))
                 .UseSqlServer(_stringDeConexao);
+
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

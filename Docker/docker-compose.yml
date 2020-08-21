@@ -1,7 +1,7 @@
 version: '3.4'
 
 services:
-    db:
+    db-sqlserver:
         container_name: docker.banco.sqlserver
         image: imagem.dogs.db
         build:
@@ -15,7 +15,7 @@ services:
         #     ACCEPT_EULA: y
         #     SA_PASSWORD: !123Dogs
 
-    api:
+    api-netcore:
         container_name: docker.dogs.api
         image: imagem.dogs.api
         ports: 
@@ -25,11 +25,11 @@ services:
             dockerfile: Dockerfile
         environment: 
             - ConfiguracaoAplicacao__DiretorioImagens=/app/teste-upload
-            - ConfiguracaoAplicacao__StringDeConexao=Server=localhost,1433;Database=DB_Dogs;User Id=sa;Password=!007Dogs;
+            - ConfiguracaoAplicacao__StringDeConexao=Server=db-sqlserver,1433;Database=DB_Dogs;User Id=sa;Password=!123Dogs;
         networks: 
             - werter_net
         depends_on: 
-            - db        
+            - db-sqlserver        
 
 networks: 
     werter_net:

@@ -1,4 +1,4 @@
-namespace Werter.Dogs.WebApi.Seguranca
+namespace Werter.Dogs.WebApi.Configuracoes.Seguranca
 {
     public class ConfiguracaoDoToken
     {

@@ -18,13 +18,14 @@ using Werter.Dogs.Servicos.ServicosDeFoto;
 using Werter.Dogs.Servicos.ServicosDeUsuario;
 using Werter.Dogs.WebApi.Configuracoes;
 
-namespace Werter.Dogs.WebApi.InjecaoDasDependencias
+namespace Werter.Dogs.WebApi.Configuracoes.InjecaoDasDependencias
 {
     public class Dependencias
     {
         public static void LidarComAsDepencias(IServiceCollection services, ConfiguracaoAplicacao configuracaoAplicacao)
         {
             // Repositorio
+            
             services.AddTransient<DogsContexto, DogsContexto>(x =>
                 new DogsContexto(configuracaoAplicacao.StringDeConexao));
             services.AddTransient<IRepositorioCliente, UsuarioRepositorio>();

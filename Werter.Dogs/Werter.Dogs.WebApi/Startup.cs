@@ -5,8 +5,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Werter.Dogs.WebApi.Configuracoes;
-using Werter.Dogs.WebApi.InjecaoDasDependencias;
-using Werter.Dogs.WebApi.Seguranca;
+using Werter.Dogs.WebApi.Configuracoes.InjecaoDasDependencias;
+using Werter.Dogs.WebApi.Configuracoes.Seguranca;
+
 
 namespace Werter.Dogs.WebApi
 {
@@ -65,13 +66,9 @@ namespace Werter.Dogs.WebApi
             app.UseAuthorization();
 
             Dependencias.LidarComArquivoEstaticos(app, env);
-
-            
-
             app.UseMiniProfiler();
-
-
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+            PrepararDb.RodarMigrationsInicial(app);
         }
     }
 }
