@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Werter.Dogs.Dominio.Requisitos.Usuario;
 using Werter.Dogs.Servicos.ServicosDeUsuario;
 
@@ -12,16 +13,26 @@ namespace Werter.Dogs.WebApi.Controllers
     public class UsuarioController : ControllerBase
     {
         private readonly ServisosDoUsuario _servisosDoUsuario;
+        private readonly IConfiguration _configuration;
 
-        public UsuarioController(ServisosDoUsuario servisosDoUsuario)
+        public UsuarioController(ServisosDoUsuario servisosDoUsuario, IConfiguration configuration)
         {
             _servisosDoUsuario = servisosDoUsuario;
+            _configuration = configuration;
         }
 
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get()
         {
-            return new[] {"Olá", "Mundo"};
+            var configuracaoApp = _configuration.GetSection("ConfiguracaoAplicacao");
+            
+            var dadosApp = new
+            {
+                DiretorioDownload = configuracaoApp.GetValue<string>("DiretorioImagens"),
+                StringDeConexao = configuracaoApp.GetValue<string>("StringDeConexao")
+            };
+
+            return Ok(dadosApp);
         }
 
         [AllowAnonymous]

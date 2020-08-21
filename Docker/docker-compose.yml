@@ -2,16 +2,34 @@ version: '3.4'
 
 services:
     db:
-        image: mcr.microsoft.com/mssql/server:2019-latest
-        environment: 
-            ACCEPT_EULA: y
-            SA_PASSWORD: !123Dogs
+        container_name: docker.banco.sqlserver
+        image: imagem.dogs.db
+        build:
+            context: .
+            dockerfile: db/Dockerfile
+        ports: 
+            - 1433:1433
+        networks: 
+            - werter_net
+        # environment: 
+        #     ACCEPT_EULA: y
+        #     SA_PASSWORD: !123Dogs
 
     api:
-        image: 
-
-
-
+        container_name: docker.dogs.api
+        image: imagem.dogs.api
+        ports: 
+            - 80:80
+        build: 
+            context: ../Werter.Dogs
+            dockerfile: Dockerfile
+        environment: 
+            - ConfiguracaoAplicacao__DiretorioImagens=/app/teste-upload
+            - ConfiguracaoAplicacao__StringDeConexao=Server=localhost,1433;Database=DB_Dogs;User Id=sa;Password=!007Dogs;
+        networks: 
+            - werter_net
+        depends_on: 
+            - db        
 
 networks: 
     werter_net:

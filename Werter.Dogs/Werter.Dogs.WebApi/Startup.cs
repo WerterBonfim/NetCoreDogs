@@ -35,7 +35,7 @@ namespace Werter.Dogs.WebApi
 
             LidarComAsConfiguracoesDeAutenticacao.ConfigurarAutenticacao(services, Configuration);
 
-            Dependencias.LidarComAsDepencias(services);
+            Dependencias.LidarComAsDepencias(services, configuracaoAplicacao);
 
 
             services.AddMemoryCache();

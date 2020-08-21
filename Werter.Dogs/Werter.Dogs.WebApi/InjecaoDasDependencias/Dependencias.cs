@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
@@ -21,10 +22,11 @@ namespace Werter.Dogs.WebApi.InjecaoDasDependencias
 {
     public class Dependencias
     {
-        public static void LidarComAsDepencias(IServiceCollection services)
+        public static void LidarComAsDepencias(IServiceCollection services, ConfiguracaoAplicacao configuracaoAplicacao)
         {
             // Repositorio
-            services.AddTransient<DogsContexto, DogsContexto>();
+            services.AddTransient<DogsContexto, DogsContexto>(x =>
+                new DogsContexto(configuracaoAplicacao.StringDeConexao));
             services.AddTransient<IRepositorioCliente, UsuarioRepositorio>();
             services.AddTransient<IRepositorioFoto, FotoRepositorio>();
             services.AddTransient<IRepositorioComentario, ComentarioRepositorio>();
@@ -46,7 +48,7 @@ namespace Werter.Dogs.WebApi.InjecaoDasDependencias
             // Querys
             services.AddTransient<IComentarioQuery, ComentarioQuerys>();
             services.AddTransient<IFeedQuery, FeedQuery>();
-            
+
 
             services.AddTransient<ServisosDoUsuario, ServisosDoUsuario>();
             services.AddTransient<ServicosDeFotos, ServicosDeFotos>();
