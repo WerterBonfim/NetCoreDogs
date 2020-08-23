@@ -33,7 +33,7 @@ namespace Werter.Dogs.Tests.Servicos
             var servico = new LidarComCadastroDeFoto(repositorioFoto);
 
 
-            var foto = new Foto(requisitos.Nome, requisitos.Peso, requisitos.Idade, requisitos.UsuarioId);
+            var foto = new Foto(requisitos.Nome, requisitos.Peso, requisitos.Idade, requisitos.UsuarioId, "jpg");
             repositorioFoto.Inserir(foto);
 
             var resultado = servico.LidarCom(requisitos);

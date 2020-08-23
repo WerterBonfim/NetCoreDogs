@@ -23,6 +23,13 @@ namespace Werter.Dogs.WebApi.Controllers
             _servisosDoUsuario = servisosDoUsuario;
         }
 
+        [Authorize]
+        [Route("verify-token")]
+        public ActionResult VerifyToken()
+        {
+            return Ok();
+        }
+
         [AllowAnonymous]
         [HttpPost]
         [Route("auth")]

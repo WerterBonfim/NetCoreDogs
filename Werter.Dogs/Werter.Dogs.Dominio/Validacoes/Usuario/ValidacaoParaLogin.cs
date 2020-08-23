@@ -9,11 +9,13 @@ namespace Werter.Dogs.Dominio.Validacoes.Usuario
         {
             RuleFor(x => x.Login)
                 .MinimumLength(3)
-                .WithMessage("Login inválido");
+                .WithMessage("Login inválido")
+                .NotEmpty().WithMessage("Login inválido");
 
             RuleFor(x => x.Senha)
                 .MinimumLength(3)
-                .WithMessage("Login inválido");
+                .WithMessage("Login inválido")
+                .NotEmpty().WithMessage("Login inválido");
         }
     }
 }

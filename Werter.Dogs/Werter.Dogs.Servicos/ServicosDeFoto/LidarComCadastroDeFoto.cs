@@ -25,7 +25,7 @@ namespace Werter.Dogs.Servicos.ServicosDeFoto
                     listaDeErros: requisitos.ListaErros().ToArray()
                 );
 
-            var foto = new Foto(requisitos.Nome, requisitos.Peso, requisitos.Idade, requisitos.UsuarioId);
+            var foto = new Foto(requisitos.Nome, requisitos.Peso, requisitos.Idade, requisitos.UsuarioId, requisitos.Extencao);
             _repositorioFoto.Inserir(foto);
             _repositorioFoto.Salvar();
 

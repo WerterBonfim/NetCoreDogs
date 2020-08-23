@@ -78,6 +78,7 @@ namespace Werter.Dogs.WebApi.Controllers
             if (arquivoInvalido)
                 return StatusCode(417, new {Mensagem = "Arquivo ou imagem inválida"});
 
+            requisitos.Extencao = ObterExtencaoArquivo(arquivoPostado);
             var resultado = _servicosDeFotos.LidarCom(requisitos);
             if (!resultado.Sucesso)
                 return BadRequest(resultado);

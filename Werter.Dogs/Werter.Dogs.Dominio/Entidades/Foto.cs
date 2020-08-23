@@ -9,21 +9,23 @@ namespace Werter.Dogs.Dominio.Entidades
         {
         }
 
-        public Foto(string nome, int peso, int idade, Guid usuarioId)
+        public Foto(string nome, int peso, int idade, Guid usuarioId, string extencao)
         {
             Nome = nome;
             Peso = peso;
             Idade = idade;
             UsuarioId = usuarioId;
+            Extencao = extencao;
         }
 
         public string Nome { get; private set; }
         public int Peso { get; private set; }
         public int Idade { get; private set; }
         public int QuantidadeDeAcessos { get; private set; }
-        public virtual Usuario Usuario { get;  set; }
+        public virtual Usuario Usuario { get; set; }
         public virtual ICollection<Comentario> Comentarios { get; set; }
         public Guid UsuarioId { get; set; }
+        public string Extencao { get; private set; }
 
         public void AtualizarIdade(int idade)
         {

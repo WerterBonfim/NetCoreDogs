@@ -20,6 +20,8 @@ namespace Werter.Dogs.Dominio.Conversoes
                     Nome = x.Nome,
                     Peso = x.Peso,
                     QtdAcessos = x.QuantidadeDeAcessos,
+                    Extencao = x.Extencao,
+                    Src = $"/imagens/{x.Id.ToString()}.{x.Extencao}",
                     Comentarios = ConverterParaComentariosDtos(x)
                 });
             }

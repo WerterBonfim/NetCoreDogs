@@ -6,5 +6,6 @@ namespace Werter.Dogs.Compartilhado.Interfaces
     {
         bool EValido();
         IEnumerable<string> ListaErros();
+        string ErroResumido { get; }
     }
 }

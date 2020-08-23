@@ -5,7 +5,7 @@ using Werter.Dogs.Servicos.Querys.Interfaces;
 
 namespace Werter.Dogs.WebApi.Controllers
 {
-    [Authorize]
+    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class FeedController : ControllerBase

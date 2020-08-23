@@ -4,7 +4,7 @@ using Werter.Dogs.Dominio.Requisitos.Usuario;
 
 namespace Werter.Dogs.Dominio.Validacoes.Usuario
 {
-    public sealed class ValidacaoParaAtualizarUsuario : AbstractValidator<RequisitosParaAtualizarUsuario>
+    public class ValidacaoParaAtualizarUsuario : AbstractValidator<RequisitosParaAtualizarUsuario>
     {
         public ValidacaoParaAtualizarUsuario()
         {

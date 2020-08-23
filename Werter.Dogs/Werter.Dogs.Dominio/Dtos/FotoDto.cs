@@ -11,5 +11,7 @@ namespace Werter.Dogs.Dominio.Dtos
         public int Peso { get; set; }
         public int QtdAcessos { get; set; }
         public List<ComentarioDto> Comentarios { get; set; }
+        public string Extencao { get; set; }
+        public string Src { get; set; }
     }
 }

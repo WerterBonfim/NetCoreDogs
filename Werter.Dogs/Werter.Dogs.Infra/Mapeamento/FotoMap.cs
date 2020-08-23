@@ -27,6 +27,9 @@ namespace Werter.Dogs.Infra.Mapeamento
 
             builder.Property(x => x.DataHoraAlteracao);
 
+            builder.Property(x => x.Extencao)
+                .HasMaxLength(10);
+
             builder.HasKey(x => x.Id);
             builder.HasOne(x => x.Usuario);
 

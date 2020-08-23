@@ -23,7 +23,7 @@ namespace Werter.Dogs.Servicos.ServicosDeUsuario
             if (!requisitos.EValido())
                 return new ResultadoDaTarefa(
                     false,
-                    "Não foi possível efetuar o login",
+                    requisitos.ErroResumido,
                     listaDeErros: requisitos.ListaErros().ToArray());
 
             var usuario = _clienteRepositorio

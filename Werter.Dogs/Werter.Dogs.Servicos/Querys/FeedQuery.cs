@@ -25,7 +25,7 @@ namespace Werter.Dogs.Servicos.Querys
                 var usuario = _repositorioCliente
                     .Queryable()
                     .Include(x => x.Fotos)
-                    .Select(x => x.ParaDto(1))
+                    .Select(x => x.ParaDto(qtdFotos))
                     .ToList();
 
                 return new ResultadoDaTarefa(
