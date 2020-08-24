@@ -15,7 +15,7 @@ namespace Werter.Dogs.Dominio.Conversoes
                 return comentarios
                     .Select(x => new ComentarioDto
                         {
-                            ComentarioId = x.Id,
+                            Id = x.Id,
                             Texto = x.Texto,
                             DataHora = x.DataHoraAlteracao,
                             NomeDeUsuario = x.Usuario.NomeDeUsuario

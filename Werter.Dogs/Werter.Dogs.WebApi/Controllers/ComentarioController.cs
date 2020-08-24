@@ -55,8 +55,9 @@ namespace Werter.Dogs.WebApi.Controllers
         }
 
 
+        [AllowAnonymous]
         [HttpGet("foto/{id:guid}")]
-        public IActionResult Cadastrar([FromRoute] Guid id)
+        public IActionResult ListarComentariosDaFoto([FromRoute] Guid id)
         {
             try
             {

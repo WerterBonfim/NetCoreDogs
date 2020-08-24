@@ -6,7 +6,6 @@ namespace Werter.Dogs.Dominio.Dtos
     {
         public Guid Id { get; set; }
         public string NomeDeUsuario { get; set; }
-        public Guid ComentarioId { get; set; }
         public DateTime DataHora { get; set; }
         public string Texto { get; set; }
     }
