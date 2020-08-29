@@ -13,5 +13,6 @@ namespace Werter.Dogs.Dominio.Dtos
         public List<ComentarioDto> Comentarios { get; set; }
         public string Extencao { get; set; }
         public string Src { get; set; }
+        public string Autor { get; set; }
     }
 }

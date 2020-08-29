@@ -17,6 +17,7 @@ namespace Werter.Dogs.Dominio.Conversoes
                 {
                     Id = x.Id,
                     Idade = x.Idade,
+                    Autor = x.Usuario.NomeDeUsuario,
                     Nome = x.Nome,
                     Peso = x.Peso,
                     QtdAcessos = x.QuantidadeDeAcessos,
