@@ -16,7 +16,7 @@ namespace Werter.Dogs.Infra.Repositorio
             Contexto = contexto;
         }
 
-        public TEntity BuscarPorId(Guid id)
+        public virtual TEntity BuscarPorId(Guid id)
         {
             return Contexto.Set<TEntity>().Find(id);
         }

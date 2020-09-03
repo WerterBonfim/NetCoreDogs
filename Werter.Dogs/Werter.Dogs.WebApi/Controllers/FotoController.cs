@@ -1,13 +1,16 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Werter.Dogs.Compartilhado;
 using Werter.Dogs.Compartilhado.Interfaces;
 using Werter.Dogs.Dominio.Entidades;
 using Werter.Dogs.Dominio.Repositorio;
 using Werter.Dogs.Dominio.Requisitos.Foto;
+using Werter.Dogs.Servicos.Querys.Interfaces;
 using Werter.Dogs.Servicos.ServicosDeFoto;
 using Werter.Dogs.WebApi.Configuracoes;
 
@@ -21,18 +24,31 @@ namespace Werter.Dogs.WebApi.Controllers
         private readonly ConfiguracaoAplicacao _configuracao;
         private readonly IRepositorioFoto _repositorioFoto;
         private readonly ServicosDeFotos _servicosDeFotos;
+        private readonly IFotoQuery _fotoQuery;
 
         public FotoController(
             IRepositorioFoto repositorioFoto,
             ConfiguracaoAplicacao configuracaoAplicacao,
-            ServicosDeFotos servicosDeFotos
+            ServicosDeFotos servicosDeFotos,
+            IFotoQuery fotoQuery
         )
         {
             _repositorioFoto = repositorioFoto;
             _configuracao = configuracaoAplicacao;
             _servicosDeFotos = servicosDeFotos;
+            _fotoQuery = fotoQuery;
         }
 
+        [AllowAnonymous]
+        [HttpGet("{id:guid}")]
+        public IActionResult DadosDaFoto([FromRoute] Guid id)
+        {
+            var resultado = _fotoQuery.BuscarFoto(id);
+            if (resultado.Sucesso)
+                return Ok(resultado);
+
+            return BadRequest(resultado);
+        }
 
         [HttpPost]
         [Route("incrementar-acesso")]
@@ -71,6 +87,13 @@ namespace Werter.Dogs.WebApi.Controllers
             [FromForm] RequisitosParaCadastrarFoto requisitos
         )
         {
+
+            if (files == null)
+                return BadRequest(new ResultadoDaTarefa(
+                    false,
+                    "A imagem não foi fornecida"));
+            
+            
             var arquivoPostado = files.FirstOrDefault();
 
             // TODO: Definir 2 MB como tamanho maximo. Validar extenção do arquivo

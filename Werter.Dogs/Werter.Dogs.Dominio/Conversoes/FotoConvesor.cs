@@ -9,6 +9,22 @@ namespace Werter.Dogs.Dominio.Conversoes
 {
     public static class FotoConvesor
     {
+        public static FotoDto ParaDto(this Foto foto)
+        {
+            return new FotoDto
+            {
+                Id = foto.Id,
+                Idade = foto.Idade,
+                Autor = foto.Usuario.NomeDeUsuario,
+                Nome = foto.Nome,
+                Peso = foto.Peso,
+                QtdAcessos = foto.QuantidadeDeAcessos,
+                Extencao = foto.Extencao,
+                Src = $"/imagens/{foto.Id.ToString()}.{foto.Extencao}",
+                Comentarios = ConverterParaComentariosDtos(foto)
+            };
+        }
+
         public static IEnumerable<FotoDto> ParaDto(this IEnumerable<Foto> fotos)
         {
             try

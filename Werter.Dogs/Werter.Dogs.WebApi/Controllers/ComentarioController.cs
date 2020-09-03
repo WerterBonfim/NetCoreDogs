@@ -1,6 +1,7 @@
 using System;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Werter.Dogs.Compartilhado;
 using Werter.Dogs.Dominio.Requisitos.Comentario;
 using Werter.Dogs.Servicos.Querys.Interfaces;
 using Werter.Dogs.Servicos.ServicosDeComentario;
@@ -62,15 +63,17 @@ namespace Werter.Dogs.WebApi.Controllers
             try
             {
                 var comentarios = _comentarioQuery.ListarComentariosDeUmaFoto(id);
-                return Ok(comentarios);
+                var resultado = new ResultadoDaTarefa(true, "", comentarios);
+                return Ok(resultado);
             }
             catch (Exception e)
             {
                 //TODO: Implementar serivo de log
+                
                 var texto = "Ocorreu um erro interno ao " +
-                            "tentar listar os comentário da foto .Erro:" +
-                            e.Message;
-                return BadRequest(texto);
+                            "tentar listar os comentário da foto.";
+                var resultado = new ResultadoDaTarefa(false, texto);
+                return BadRequest(resultado);
             }
         }
     }

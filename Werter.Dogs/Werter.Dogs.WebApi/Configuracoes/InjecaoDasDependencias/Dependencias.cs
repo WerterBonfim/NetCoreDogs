@@ -49,6 +49,7 @@ namespace Werter.Dogs.WebApi.Configuracoes.InjecaoDasDependencias
             // Querys
             services.AddTransient<IComentarioQuery, ComentarioQuerys>();
             services.AddTransient<IFeedQuery, FeedQuery>();
+            services.AddTransient<IFotoQuery, FotoQuery>();
 
 
             services.AddTransient<ServisosDoUsuario, ServisosDoUsuario>();

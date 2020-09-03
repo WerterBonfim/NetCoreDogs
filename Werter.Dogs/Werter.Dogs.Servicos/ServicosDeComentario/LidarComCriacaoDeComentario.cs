@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using Werter.Dogs.Compartilhado;
 using Werter.Dogs.Compartilhado.Interfaces;
+using Werter.Dogs.Dominio.Conversoes;
 using Werter.Dogs.Dominio.Entidades;
 using Werter.Dogs.Dominio.Repositorio;
 using Werter.Dogs.Dominio.Requisitos.Comentario;
@@ -31,10 +32,12 @@ namespace Werter.Dogs.Servicos.ServicosDeComentario
                 var comentario = new Comentario(requisitos.FotoId, requisitos.UsuarioId, requisitos.Texto);
                 _repositorioComentario.Inserir(comentario);
                 _repositorioComentario.Salvar();
+                var comentarioDto = _repositorioComentario.BuscarPorId(comentario.Id).ParaDto();
 
                 return new ResultadoDaTarefa(
                     true,
-                    "Mensagem cadastrada com sucesso"
+                    "Mensagem cadastrada com sucesso",
+                    dados: comentarioDto
                 );
             }
             catch (Exception e)

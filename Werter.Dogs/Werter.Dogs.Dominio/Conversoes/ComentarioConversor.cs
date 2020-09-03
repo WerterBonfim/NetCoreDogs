@@ -8,26 +8,29 @@ namespace Werter.Dogs.Dominio.Conversoes
 {
     public static class ComentarioConversor
     {
-        public static IEnumerable<ComentarioDto> ParaDto(this ICollection<Comentario> comentarios)
+        public static ComentarioDto ParaDto(this Comentario comentario)
         {
             try
             {
-                return comentarios
-                    .Select(x => new ComentarioDto
-                        {
-                            Id = x.Id,
-                            Texto = x.Texto,
-                            DataHora = x.DataHoraAlteracao,
-                            NomeDeUsuario = x.Usuario.NomeDeUsuario
-                        }
-                    );
+                return new ComentarioDto
+                {
+                    Id = comentario.Id,
+                    Texto = comentario.Texto,
+                    DataHora = comentario.DataHoraAlteracao,
+                    NomeDeUsuario = comentario.Usuario.NomeDeUsuario
+                };
             }
             catch (Exception erro)
             {
                 var mensagem = "Ocorreu um erro ao tentar gerar um Dto. De Comentario para ComentarioDto";
                 throw new Exception(mensagem, erro);
             }
-            
+        }
+
+        public static IEnumerable<ComentarioDto> ParaDto(this ICollection<Comentario> comentarios)
+        {
+            return comentarios
+                .Select(x => x.ParaDto());
         }
     }
 }
