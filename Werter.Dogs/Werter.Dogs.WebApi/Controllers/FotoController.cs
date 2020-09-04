@@ -50,6 +50,7 @@ namespace Werter.Dogs.WebApi.Controllers
             return BadRequest(resultado);
         }
 
+        [AllowAnonymous]
         [HttpPost]
         [Route("incrementar-acesso")]
         public IActionResult IncrementarQtdAcessos([FromBody] RequisitosParaIncrementarAcesso requisitos)

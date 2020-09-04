@@ -28,9 +28,19 @@ namespace Werter.Dogs.WebApi.Controllers
         }
 
         [HttpGet("usuario/{id:guid}")]
-        public IActionResult ListarFeedUsuario([FromRoute]Guid id, [FromQuery]int pagina)
+        public IActionResult BuscarFeedUsuarioPorId([FromRoute]Guid id, [FromQuery]int pagina)
         {
             var resultado = _feedQuery.ListarFeedUsuario(id, 1, 6);
+            if (resultado.Sucesso)
+                return Ok(resultado);
+
+            return BadRequest(resultado);
+        }
+        
+        [HttpGet("usuario/{nome}")]
+        public IActionResult BuscarFeedUsuarioPorNomeDeUsuario([FromRoute]string nome, [FromQuery]int pagina)
+        {
+            var resultado = _feedQuery.ListarFeedUsuario(nome, 1, 6);
             if (resultado.Sucesso)
                 return Ok(resultado);
 

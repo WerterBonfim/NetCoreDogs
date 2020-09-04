@@ -52,9 +52,37 @@ namespace Werter.Dogs.Servicos.Querys
                 var usuario = _repositorioCliente
                     .Queryable()
                     .Include(x => x.Fotos)
-                    .FirstOrDefault()
+                    .FirstOrDefault(x => x.Id == id)
                     .ParaDto(qtdPorPagina);
-                
+
+                return new ResultadoDaTarefa(
+                    true,
+                    "Consulta realizada co sucesso",
+                    usuario
+                );
+            }
+            catch (Exception e)
+            {
+                return new ResultadoDaTarefa(
+                    false,
+                    "Ocorreu um erro ao tentar listar os feeds do usuário.",
+                    listaDeErros: new[] {e.Message}
+                );
+            }
+        }
+
+        
+
+        public IResultado ListarFeedUsuario(string nomeDeUsuario, int pagina = 1, int qtdPorPagina = 6)
+        {
+            try
+            {
+                var usuario = _repositorioCliente
+                    .Queryable()
+                    .Include(x => x.Fotos)
+                    .FirstOrDefault(x => x.NomeDeUsuario == nomeDeUsuario)
+                    .ParaDto(qtdPorPagina);
+
                 return new ResultadoDaTarefa(
                     true,
                     "Consulta realizada co sucesso",
